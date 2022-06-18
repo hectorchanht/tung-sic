@@ -1,5 +1,6 @@
 import { Box, Container } from '@chakra-ui/react'
 import type { NextPage } from 'next'
+import Marquee from "react-fast-marquee"
 import Faqs from '../src/components/faqs'
 import Footer from '../src/components/layout/footer'
 import Header from '../src/components/layout/header'
@@ -13,17 +14,27 @@ const Home: NextPage = () => {
       <Header />
 
       <Box as={'main'} flex={1}>
-        <Box fontSize={'4em'}>
+        <Box fontSize={'3em'} textAlign='center'>
           {loc.get('welcome')}
         </Box>
-        <Box w={'100%'} textAlign='center' 
-          onClick={() => window.open("https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di", "_blank")}>
-          {loc.get('join')}
-        </Box>
 
-        <h3>
+        <Marquee pauseOnHover pauseOnClick direction='right' gradient={false}>
+          <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank">
+            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+            <br />
+            {loc.get('join')}
+            <br />
+            {loc.get('join')}
+            <br />
+            {loc.get('join')}
+            <br />
+            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+          </a>
+        </Marquee>
+
+        <Box fontWeight={800} textAlign='center'>
           {loc.get('intro1')}
-        </h3>
+        </Box>
 
         <br />
         <br />
