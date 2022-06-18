@@ -1,6 +1,6 @@
 import { Box, Container } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import Faqs from '../src/components/faq/faqs'
+import Faqs from '../src/components/faqs'
 import Footer from '../src/components/layout/footer'
 import Header from '../src/components/layout/header'
 import { useLocale } from '../src/utils/hooks'

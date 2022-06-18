@@ -1,9 +1,15 @@
 import { Box } from '@chakra-ui/react'
 import Head from 'next/head'
-import Locale from '../locale-switcher'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+ 
+const Header = () => {
+  const router = useRouter()
+  const { locales, locale: activeLocale } = router
+  const otherLocales = locales && locales.filter((locale) => locale !== activeLocale)
 
-
-export default () => (
+  return (
   <div>
     <Head>
       <title>tung-sic</title>
@@ -12,7 +18,18 @@ export default () => (
     </Head>
 
     <Box as={'nav'}>
-      <Locale />
+     {otherLocales ? otherLocales.map((locale) => {
+    const { pathname, query, asPath } = router;
+    const isEn = activeLocale === 'en'
+    return <Link key={locale} href={{ pathname, query }} as={asPath} locale={locale}>
+      <a>
+        <Image src={isEn ? '/hk.svg' : '/en.svg'} alt="Logo" height={24} width={24} />
+        {locale}
+      </a>
+    </Link>
+  }) : null}
     </Box>
   </div>
-)
+)}
+
+export default Header;
