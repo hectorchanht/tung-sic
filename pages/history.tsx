@@ -21,7 +21,7 @@ const HistoryPage = () => {
       setPage(d);
     }} />
 
-    <Flex>
+    <Flex justifyContent={'center'} m={4}>
       <Tooltip label="hide comment, only showing posts from DJ">
         <IconButton
           aria-label={'hide-comment'}
