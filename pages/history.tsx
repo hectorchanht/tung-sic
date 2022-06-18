@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, SimpleGrid, Switch } from '@chakra-ui/react';
+import { FormControl, FormLabel, HStack, SimpleGrid, Switch } from '@chakra-ui/react';
 import React from 'react';
 import data from '../public/parsed-record.json';
 import Layout from "../src/components/layout/layout";
@@ -22,15 +22,17 @@ const HistoryPage = () => {
     }} />
 
     <FormControl display='flex' alignItems='center'>
-      <FormLabel htmlFor='hide-feedbacks' mb='0'>
-        hide feedbacks?
-      </FormLabel>
-      <Switch id='hide-feedbacks' isChecked={hideFeedback} onChange={() => setHide(d => ({...d, hideFeedback:!d.hideFeedback}))} />
+      <HStack>
+        <FormLabel htmlFor='hide-feedbacks' mb='0'>
+          hide feedbacks?
+        </FormLabel>
+        <Switch id='hide-feedbacks' isChecked={hideFeedback} onChange={() => setHide(d => ({ ...d, hideFeedback: !d.hideFeedback }))} />
 
-      <FormLabel htmlFor='hide-text' mb='0'>
-        hide text?
-      </FormLabel>
-      <Switch id='hide-text' isChecked={hideText} onChange={() => setHide(d => ({...d, hideText:!d.hideText}))}/>
+        <FormLabel htmlFor='hide-text' mb='0'>
+          hide text?
+        </FormLabel>
+        <Switch id='hide-text' isChecked={hideText} onChange={() => setHide(d => ({ ...d, hideText: !d.hideText }))} />
+      </HStack>
     </FormControl>
 
     <SimpleGrid columns={2} spacing={2}>
@@ -39,7 +41,7 @@ const HistoryPage = () => {
         if (message.match(urlRegex)) {
           return <Video link={message} key={datetime + i} />
         } else {
-          if (!isDj && hideFeedback || hideText) return ;
+          if (!isDj && hideFeedback || hideText) return;
           if (message.includes('\n')) {
             return message.split('\n').map(d => <p key={d}>{d}</p>)
           } else {
