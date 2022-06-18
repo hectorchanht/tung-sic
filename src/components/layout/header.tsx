@@ -52,9 +52,9 @@ const HS = ({ children }: { children: ReactNode }) => <HStack
 </HStack >;
 
 const Menus = () => <HStack spacing={8} alignItems={'center'}>
-  <a href="/">
+  <Link href="/">
     <Image src={'/logo.png'} width={40} height={40} />
-  </a>
+  </Link>
 
   <HS>
     {['History'].map((link) => (
