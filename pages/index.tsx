@@ -9,7 +9,7 @@ import { useLocale } from '../src/utils/hooks'
 const Home: NextPage = () => {
   const loc = useLocale();
   return (
-    <Container flexDirection={'column'}>
+    <Container display={'flex'} flexDirection={'column'} height={'100vh'}>
       <Header />
 
       <Box as={'main'} flex={1}>
