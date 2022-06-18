@@ -4,14 +4,14 @@ const moment = require('moment');
 const djName = '東'
 
 const parseRawWhatsappRecord = (filename = 'raw-whatsapp-record.txt') => {
-
   const dateRegex = /\d{1,2}\/\d{1,2}\/\d{1,2}, \d{1,2}:\d{1,2} - /g;
   const excludeKeywords = [
     "Messages and calls are end-to-end encrypted.",
     "You changed the group description",
     "joined using this group's invite link\n",
     "You added",
-    'left\n'
+    'left\n',
+    '<Media omitted>'
   ];
 
   fs.readFile(`../../public/${filename}`, 'utf8', function (err, data) {

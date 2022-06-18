@@ -1,0 +1,98 @@
+import { Flex, IconButton, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Text, Tooltip } from '@chakra-ui/react';
+import React from 'react';
+import data from '../../public/parsed-record.json';
+import {
+  ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon
+} from "@chakra-ui/icons";
+
+const Pagination = ({ cb }) => {
+  const [pageIndex, setPageIndex] = React.useState(0);
+  const [pageSize, setPageSize] = React.useState(10);
+  const maxPage = Math.ceil(data.length / pageSize);
+
+  React.useEffect(() => {
+    cb && cb({ pageIndex, pageSize })
+  }, [pageIndex, pageSize]);
+
+  return <Flex justifyContent="space-between" m={4} alignItems="center">
+    <Flex>
+      <Tooltip label="First Page">
+        <IconButton
+          onClick={() => setPageIndex(0)}
+          isDisabled={pageIndex <= 0}
+          icon={<ArrowLeftIcon h={3} w={3} />}
+          mr={4}
+        />
+      </Tooltip>
+      <Tooltip label="Previous Page">
+        <IconButton
+          onClick={() => setPageIndex(d => d - 1)}
+          isDisabled={pageIndex <= 0}
+          icon={<ChevronLeftIcon h={6} w={6} />}
+        />
+      </Tooltip>
+    </Flex>
+
+    <Flex alignItems="center">
+      <Text flexShrink="0" mr={8}>
+        {/* Page{" "} */}
+        <Text fontWeight="bold" as="span">
+          {pageIndex + 1}
+        </Text>{" "}
+        /{" "}
+        <Text fontWeight="bold" as="span">
+          {maxPage}
+        </Text>
+      </Text>
+      <Text flexShrink="0">Go to page:</Text>{" "}
+      <NumberInput
+        ml={2}
+        mr={8}
+        w={28}
+        min={1}
+        max={maxPage}
+        value={pageIndex+1}
+        onChange={(value) => setPageIndex(!!value ? Number(value) - 1 : 0)}
+      >
+        <NumberInputField />
+        <NumberInputStepper>
+          <NumberIncrementStepper />
+          <NumberDecrementStepper />
+        </NumberInputStepper>
+      </NumberInput>
+      <Select
+        w={32}
+        value={pageSize}
+        onChange={(e) => {
+          setPageSize(Number(e.target.value));
+        }}
+      >
+        {[10, 20, 30, 40, 50].map((pageSize) => (
+          <option key={pageSize} value={pageSize}>
+            Show {pageSize}
+          </option>
+        ))}
+      </Select>
+    </Flex>
+
+    <Flex>
+      <Tooltip label="Next Page">
+        <IconButton
+          onClick={() => setPageIndex(d => d + 1)}
+          // isDisabled={!canNextPage}
+          icon={<ChevronRightIcon h={6} w={6} />}
+        />
+      </Tooltip>
+      <Tooltip label="Last Page">
+        <IconButton
+          // onClick={() => gotoPage(pageCount - 1)}
+          // isDisabled={!canNextPage}
+          icon={<ArrowRightIcon h={3} w={3} />}
+          ml={4}
+        />
+      </Tooltip>
+    </Flex>
+  </Flex>
+};
+
+export default Pagination;
