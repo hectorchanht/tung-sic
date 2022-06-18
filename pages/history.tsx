@@ -21,7 +21,7 @@ const HistoryPage = () => {
       setPage(d);
     }} />
 
-    <Flex m={4}>
+    <Flex>
       <Tooltip label="hide comment, only showing posts from DJ">
         <IconButton
           aria-label={'hide-comment'}
@@ -41,15 +41,16 @@ const HistoryPage = () => {
 
     <SimpleGrid columns={2} spacing={2}>
       {filteredData.map(({ datetime, isDj, message }, i) => {
+        const k = datetime + message + i;
         if (message.length === 0) return;
         if (message.match(urlRegex)) {
-          return <Video link={message} key={datetime + i} />
+          return <Video link={message} key={k} />
         } else {
           if (!isDj && hideFeedback || hideText) return;
           if (message.includes('\n')) {
-            return message.split('\n').map(d => <p key={d}>{d}</p>)
+            return message.split('\n').map(d => <p key={k}>{d}</p>)
           } else {
-            return <p>{message}</p>
+            return <p key={k}>{message}</p>
           }
         }
       })}
