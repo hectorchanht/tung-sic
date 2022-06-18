@@ -6,7 +6,7 @@ import Header from "./header";
 const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
-    <Container display={'flex'} flexDirection={'column'} height={'100vh'}>
+    <Container maxW={'980px'} display={'flex'} flexDirection={'column'} height={'100vh'}>
       <Header />
       <Box as={'main'} flex={1}>
         {children}
