@@ -6,7 +6,7 @@ import React from 'react';
 import data from '../../public/parsed-record.json';
 
 
-type CallbackFunction = ({ pageIndex, pageSize  }:{ pageIndex: number, pageSize: number }) => void;
+type CallbackFunction = ({ pageIndex, pageSize }: { pageIndex: number, pageSize: number }) => void;
 
 const Pagination = ({ cb }: { cb: CallbackFunction }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
@@ -72,7 +72,7 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
           setPageSize(Number(e.target.value));
         }}
       >
-        {[6, 12, 24,48,96].map((pageSize) => (
+        {[6, 12, 24, 48, 96].map((pageSize) => (
           <option key={pageSize} value={pageSize}>
             Show {pageSize}
           </option>
@@ -85,15 +85,15 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
         <IconButton
           aria-label={'next-page'}
           onClick={() => setPageIndex(d => d + 1)}
-          isDisabled={pageIndex >= maxPage}
+          isDisabled={pageIndex >= maxPage - 1}
           icon={<ChevronRightIcon h={6} w={6} />}
         />
       </Tooltip>
       <Tooltip label="Last Page">
         <IconButton
           aria-label={'last-page'}
-          onClick={() => setPageIndex(maxPage)}
-          isDisabled={pageIndex >= maxPage}
+          onClick={() => setPageIndex(maxPage - 1)}
+          isDisabled={pageIndex >= maxPage - 1}
           icon={<ArrowRightIcon h={3} w={3} />}
           ml={4}
         />
