@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { Avatar}  from '@chakra-ui/react'
  
 const Header = () => {
   const router = useRouter()
@@ -20,11 +21,10 @@ const Header = () => {
     <Box as={'nav'}>
      {otherLocales ? otherLocales.map((locale) => {
     const { pathname, query, asPath } = router;
-    const isEn = activeLocale === 'en'
+       const isEn = activeLocale === 'en'
     return <Link key={locale} href={{ pathname, query }} as={asPath} locale={locale}>
       <a>
-        <Image src={isEn ? '/hk.svg' : '/en.svg'} alt="Logo" height={24} width={24} />
-        {locale}
+        <Avatar name={isEn ? 'hk' : 'en'} src={isEn ? '/hk.svg' : '/en.svg'} />
       </a>
     </Link>
   }) : null}
