@@ -1,8 +1,9 @@
 import { Box, Container } from "@chakra-ui/react";
+import { ReactNode } from "react";
 import Footer from "./footer";
 import Header from "./header";
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
     <Container display={'flex'} flexDirection={'column'} height={'100vh'}>

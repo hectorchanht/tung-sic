@@ -5,14 +5,17 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import ThemeSwitchBtn from './themeSwitchBtn';
-const Links = ['History'];
+
 
 const LocaleAvatar = () => {
   const router = useRouter();
   const { locales, locale: activeLocale } = router;
   const otherLocales = locales && locales.filter((locale) => locale !== activeLocale);
 
-  return otherLocales ? otherLocales.map((locale) => {
+  if (!otherLocales) return <div />;
+
+  return <Box>
+    {otherLocales.map((locale) => {
       const { pathname, query, asPath } = router;
       const isEn = activeLocale === 'en'
       return (
@@ -22,24 +25,27 @@ const LocaleAvatar = () => {
           </a>
         </Link>
       )
-    }) : null
+    })}
+  </Box>
 }
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
-    px={2}
-    py={1}
+    // @ts-ignore
+    px={'2'}
+    py={'1'}
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
+    // @ts-ignore
     href={`/${children.toLowerCase()}`}>
     {children}
   </Link>
 );
 
-const HS = ({ children }) => <HStack
+const HS = ({ children }: { children: ReactNode }) => <HStack
   spacing={4}
   display={{ base: 'none', md: 'flex' }}>
   {children}
@@ -51,7 +57,7 @@ const Menus = () => <HStack spacing={8} alignItems={'center'}>
   </Box>
 
   <HS>
-    {Links.map((link) => (
+    {['History'].map((link) => (
       <NavLink key={link}>{link}</NavLink>
     ))}
   </HS>
