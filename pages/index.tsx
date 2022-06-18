@@ -1,6 +1,5 @@
 import { Box } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import Image from 'next/image'
 import Marquee from "react-fast-marquee"
 import Faqs from '../src/components/faqs'
 import Layout from '../src/components/layout/layout'
@@ -19,7 +18,17 @@ const Home: NextPage = () => {
 
       <Marquee pauseOnHover pauseOnClick direction='right' gradient={false}>
         <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank" rel="noreferrer" >
-          <Image width={420} height={230} src={`/${isEn ? 'en' : 'zh'}-join.svg`} alt={'join whatsapp group now!'} />
+          {/* <Image width={420} height={230} src={`/${isEn ? 'en' : 'zh'}-join.svg`} alt={'join whatsapp group now!'} /> */}
+
+          ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
+          <br />
+          {loc.get('join')}
+          <br />
+          {loc.get('join')}
+          <br />
+          {loc.get('join')}
+          <br />
+          ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
         </a>
       </Marquee>
 
