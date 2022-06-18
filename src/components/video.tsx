@@ -1,6 +1,6 @@
 // https://gist.github.com/protrolium/8831763
 
-// import Image from 'next/image'
+import Image from 'next/image';
 
 
 const Video = ({ link }: { link: string }) => {
@@ -12,9 +12,9 @@ const Video = ({ link }: { link: string }) => {
 
   return (
     <div>
-      <a target="_blank" href={link}>
-        {/* <Image layout='fill' src={`https://img.youtube.com/vi/${id}/0.jpg`}/> */}
-        <img src={`https://img.youtube.com/vi/${id}/0.jpg`} />
+      <a href={link} target="_blank" rel="noreferrer">
+        <Image height={352} width={470} src={`https://img.youtube.com/vi/${id}/0.jpg`}/>
+        {/* <img src={`https://img.youtube.com/vi/${id}/hqdefault.jpg`} /> */}
       </a>
     </div>
   )
