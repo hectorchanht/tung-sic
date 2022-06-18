@@ -16,7 +16,8 @@ const Home: NextPage = () => {
         <Box fontSize={'4em'}>
           {loc.get('welcome')}
         </Box>
-        <Box as={'a'} justifyContent='center' href="https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di">
+        <Box w={'100%'} textAlign='center' 
+          onClick={() => window.open("https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di", "_blank")}>
           {loc.get('join')}
         </Box>
 
