@@ -1,10 +1,10 @@
-import { FormControl, FormLabel, HStack, SimpleGrid, Switch } from '@chakra-ui/react';
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { Flex, IconButton, SimpleGrid, Tooltip } from '@chakra-ui/react';
 import React from 'react';
 import data from '../public/parsed-record.json';
 import Layout from "../src/components/layout/layout";
 import Pagination from '../src/components/pagination';
 import Video from '../src/components/video';
-
 
 const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
@@ -21,19 +21,23 @@ const HistoryPage = () => {
       setPage(d);
     }} />
 
-    <FormControl display='flex' alignItems='center'>
-      <HStack>
-        <FormLabel htmlFor='hide-feedbacks' mb='0'>
-          hide feedbacks?
-        </FormLabel>
-        <Switch id='hide-feedbacks' isChecked={hideFeedback} onChange={() => setHide(d => ({ ...d, hideFeedback: !d.hideFeedback }))} />
-
-        <FormLabel htmlFor='hide-text' mb='0'>
-          hide text?
-        </FormLabel>
-        <Switch id='hide-text' isChecked={hideText} onChange={() => setHide(d => ({ ...d, hideText: !d.hideText }))} />
-      </HStack>
-    </FormControl>
+    <Flex m={4}>
+      <Tooltip label="hide comment, only showing posts from DJ">
+        <IconButton
+          aria-label={'hide-comment'}
+          onClick={() => setHide(d => ({ ...d, hideFeedback: !d.hideFeedback }))}
+          icon={hideFeedback ? <ViewIcon /> : <ViewOffIcon />}
+        />
+      </Tooltip>
+      <Tooltip label="hide text, only showing songs">
+        <IconButton
+          aria-label={'hide-text'}
+          onClick={() => setHide(d => ({ ...d, hideText: !d.hideText }))}
+          icon={hideText ? <ViewIcon /> : <ViewOffIcon />}
+          ml={4}
+        />
+      </Tooltip>
+    </Flex>
 
     <SimpleGrid columns={2} spacing={2}>
       {filteredData.map(({ datetime, isDj, message }, i) => {
