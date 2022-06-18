@@ -22,7 +22,7 @@ const Faqs = () => {
                 <AccordionIcon />
               </AccordionButton>
             </h2>
-            <AccordionPanel pb={4}>{a}</AccordionPanel>
+            <AccordionPanel pb={4} ml={4}>{a}</AccordionPanel>
           </AccordionItem>
         ))}
       </Accordion>
