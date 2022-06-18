@@ -22,7 +22,7 @@ const LocaleAvatar = () => {
       return (
         <Link key={locale} href={{ pathname, query }} as={asPath} locale={locale}>
           <a>
-            <Avatar h={10} name={isEn ? 'hk' : 'en'} src={isEn ? '/hk.svg' : '/en.svg'} />
+            <Image width={40} height={40} src={isEn ? '/hk.svg' : '/en.svg'} />
           </a>
         </Link>
       )
