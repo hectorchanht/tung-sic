@@ -1,5 +1,5 @@
 import { ChatIcon } from '@chakra-ui/icons';
-import { Avatar, Box, Flex, HStack, IconButton } from '@chakra-ui/react';
+import { Avatar, Box, Circle, Flex, HStack, IconButton } from '@chakra-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -46,10 +46,9 @@ const Menus = () => <HStack spacing={8} alignItems={'center'}>
   </Link>
 
   <NavLink href={'/history'}>
-    <IconButton aria-label='past echo' icon={<ChatIcon />} />
+    <IconButton variant='ghost' aria-label='past echo' icon={<ChatIcon />} />
   </NavLink>
 </HStack>;
-
 
 const Header = () => {
   return (
