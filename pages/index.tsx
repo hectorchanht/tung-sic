@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         </Box>
 
         <Marquee pauseOnHover pauseOnClick direction='right' gradient={false}>
-          <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank">
+          <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank" rel="noreferrer" >
             ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
             <br />
             {loc.get('join')}
