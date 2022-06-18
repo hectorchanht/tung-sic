@@ -1,7 +1,8 @@
-import { Avatar, Box } from '@chakra-ui/react'
+import { Avatar, Flex } from '@chakra-ui/react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import ThemeSwitchBtn from './themeSwitchBtn'
 
 const Header = () => {
   const router = useRouter()
@@ -16,19 +17,21 @@ const Header = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box as={'nav'}>
+      <Flex as={'nav'} h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <ThemeSwitchBtn />
+
         {otherLocales ? otherLocales.map((locale) => {
           const { pathname, query, asPath } = router;
           const isEn = activeLocale === 'en'
           return (
             <Link key={locale} href={{ pathname, query }} as={asPath} locale={locale}>
-            <a>
-              <Avatar name={isEn ? 'hk' : 'en'} src={isEn ? '/hk.svg' : '/en.svg'} />
-            </a>
+              <a>
+                <Avatar h={10} name={isEn ? 'hk' : 'en'} src={isEn ? '/hk.svg' : '/en.svg'} />
+              </a>
             </Link>
           )
         }) : null}
-      </Box>
+      </Flex>
     </div>
   )
 }
