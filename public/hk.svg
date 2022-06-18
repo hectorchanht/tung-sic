@@ -1,143 +1,50 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.0"
-   id="hk_flag"
-   width="650"
-   height="700"
-   sodipodi:version="0.32"
-   inkscape:version="0.46"
-   sodipodi:docname="Hong Kong emblem watermark.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
-  <metadata
-     id="metadata2487">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <sodipodi:namedview
-     inkscape:window-height="975"
-     inkscape:window-width="1280"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     guidetolerance="10.0"
-     gridtolerance="10.0"
-     objecttolerance="10.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
-     pagecolor="#ffffff"
-     id="base"
-     showgrid="false"
-     borderlayer="true"
-     inkscape:zoom="0.60444444"
-     inkscape:cx="597.52358"
-     inkscape:cy="246.14287"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
-     inkscape:current-layer="hk_flag" />
-  <desc
-     id="desc2458">Flag of Hong Kong</desc>
-  <defs
-     id="defs2460">
-    <inkscape:perspective
-       sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 300 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="900 : 300 : 1"
-       inkscape:persp3d-origin="450 : 200 : 1"
-       id="perspective2489" />
-    <g
-       transform="matrix(0.9724513,0.2331059,-0.2331059,0.9724513,0,0)"
-       id="petal">
-      <path
-         d="M 0,0 C -44.566882,-6.6620676 -77.546376,-44.93793 -77.546376,-90 C -77.546376,-135.06207 -44.566882,-173.33793 -4.798939e-14,-180 C -12.658446,-169.50195 -17.879249,-150.03247 -1.8048128,-135.04727 C 15.826639,-118.61056 16.507023,-83.873286 -5.815508,-66.029751 C -23.212813,-52.123199 -31.851421,-17.645181 0,0 z"
-         id="path2463"
-         style="fill:#ffffff" />
-      <g
-         id="g2465"
-         style="fill:#ff8080">
-        <polygon
-           id="star"
-           transform="matrix(14.854021,-2.0875965,-2.0875965,-14.854021,-32.160888,-105.19352)"
-           points="0,-1 0.58778525,0.80901699 -0.95105652,-0.30901699 0.95105652,-0.30901699 -0.58778525,0.80901699 0,-1 " />
-        <path
-           d="M 0.1040913,-1.428629 C -37.826542,-13.482406 -50.196184,-58.130457 -39.378541,-87.111263 L -41.85269,-87.963134 C -52.48057,-61.061375 -42.445112,-11.988524 -0.53400654,1.114899 L 0.1040913,-1.428629 z"
-           id="path2468" />
-      </g>
-    </g>
-  </defs>
-  <rect
-     width="676.65442"
-     height="720.77203"
-     id="rect2470"
-     style="fill:#ff8080"
-     x="0"
-     y="0" />
-  <g
-     id="g3267"
-     transform="matrix(1.9106552,0.8343165,-0.8343165,1.9106552,-323.80513,-648.69769)">
-    <use
-       transform="translate(450,300)"
-       xlink:href="#petal"
-       id="use2474"
-       x="0"
-       y="0"
-       width="900"
-       height="600" />
-    <use
-       xlink:href="#petal"
-       transform="matrix(0.309017,0.9510565,-0.9510565,0.309017,450,300)"
-       id="use2476"
-       x="0"
-       y="0"
-       width="900"
-       height="600" />
-    <use
-       xlink:href="#petal"
-       transform="matrix(0.309017,-0.9510565,0.9510565,0.309017,450,300)"
-       id="use2478"
-       x="0"
-       y="0"
-       width="900"
-       height="600" />
-    <use
-       xlink:href="#petal"
-       transform="matrix(-0.809017,0.5877853,-0.5877853,-0.809017,450,300)"
-       id="use2480"
-       x="0"
-       y="0"
-       width="900"
-       height="600" />
-    <use
-       xlink:href="#petal"
-       transform="matrix(-0.809017,-0.5877853,0.5877853,-0.809017,450,300)"
-       id="use2482"
-       x="0"
-       y="0"
-       width="900"
-       height="600" />
-    <circle
-       transform="translate(450,300)"
-       r="4"
-       id="circle2484"
-       cx="0"
-       cy="0"
-       sodipodi:cx="0"
-       sodipodi:cy="0"
-       sodipodi:rx="4"
-       sodipodi:ry="4"
-       style="fill:#ff8080" />
-  </g>
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<circle style="fill:#D80027;" cx="256" cy="256" r="256"/>
+<g>
+	<path style="fill:#F0F0F0;" d="M282.43,193.668c-5.818,24.199-16.155,19.584-21.228,40.688
+		c-29.883-7.185-48.287-37.235-41.102-67.12c7.182-29.883,37.235-48.287,67.119-41.102
+		C277.072,168.341,287.635,172.025,282.43,193.668z"/>
+	<path style="fill:#F0F0F0;" d="M204.887,211.6c21.217,13.01,13.633,21.417,32.135,32.764
+		c-16.068,26.201-50.333,34.416-76.535,18.349c-26.201-16.067-34.418-50.334-18.35-76.535
+		C179.143,208.87,185.908,199.963,204.887,211.6z"/>
+	<path style="fill:#F0F0F0;" d="M197.978,290.892c18.931-16.158,24.58-6.348,41.089-20.438c19.955,23.377,17.179,58.505-6.197,78.46
+		c-23.378,19.955-58.506,17.176-78.458-6.199C187.426,314.532,181.045,305.343,197.978,290.892z"/>
+	<path style="fill:#F0F0F0;" d="M271.254,321.965c-9.52-22.997,1.556-25.341-6.743-45.394c28.399-11.753,60.951,1.741,72.705,30.14
+		c11.753,28.399-1.743,60.95-30.142,72.704C290.477,339.306,279.768,342.535,271.254,321.965z"/>
+	<path style="fill:#F0F0F0;" d="M323.45,261.876c-24.813,1.947-23.622-9.313-45.257-7.615c-2.403-30.639,20.491-57.43,51.132-59.835
+		c30.64-2.399,57.43,20.493,59.832,51.135C345.88,248.954,345.641,260.137,323.45,261.876z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
 </svg>

@@ -1,9 +1,8 @@
-import { Box, Container } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Marquee from "react-fast-marquee"
 import Faqs from '../src/components/faqs'
-import Footer from '../src/components/layout/footer'
-import Header from '../src/components/layout/header'
+import Layout from '../src/components/layout/layout'
 import { useLang, useLocale } from '../src/utils/hooks'
 
 
@@ -11,10 +10,8 @@ const Home: NextPage = () => {
   const loc = useLocale();
   const { isEn } = useLang();
   return (
-    <Container display={'flex'} flexDirection={'column'} height={'100vh'}>
-      <Header />
-
-      <Box as={'main'} flex={1}>
+    <Layout>
+      
         <Box fontSize={'3em'} textAlign='center'>
           {loc.get('welcome')}
         </Box>
@@ -43,10 +40,7 @@ const Home: NextPage = () => {
 
         <Faqs />
 
-      </Box>
-
-      <Footer />
-    </Container>
+    </Layout>
   )
 }
 

@@ -1,8 +1,42 @@
-import { Avatar, Flex } from '@chakra-ui/react'
-import Head from 'next/head'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import ThemeSwitchBtn from './themeSwitchBtn'
+import { Avatar, Box, Flex, HStack, useColorModeValue } from '@chakra-ui/react';
+import Head from 'next/head';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
+import ThemeSwitchBtn from './themeSwitchBtn';
+const Links = ['History'];
+
+
+const NavLink = ({ children }: { children: ReactNode }) => (
+  <Link
+    px={2}
+    py={1}
+    rounded={'md'}
+    _hover={{
+      textDecoration: 'none',
+      bg: useColorModeValue('gray.200', 'gray.700'),
+    }}
+    href={`/${children.toLowerCase()}`}>
+    {children}
+  </Link>
+);
+
+const Menus = () => <HStack spacing={8} alignItems={'center'}>
+  <Box as={Link} href="/">
+    <Image src={'/logo.png'} width={40} height={40} />
+  </Box>
+
+  <HStack
+    as={'nav'}
+    spacing={4}
+    display={{ base: 'none', md: 'flex' }}>
+    {Links.map((link) => (
+      <NavLink key={link}>{link}</NavLink>
+    ))}
+  </HStack>
+</HStack>
+
 
 const Header = () => {
   const router = useRouter()
@@ -18,6 +52,8 @@ const Header = () => {
       </Head>
 
       <Flex as={'nav'} h={16} alignItems={'center'} justifyContent={'space-between'}>
+        <Menus />
+
         <ThemeSwitchBtn />
 
         {otherLocales ? otherLocales.map((locale) => {
