@@ -1,4 +1,5 @@
-import { Avatar, Box, Flex, HStack, useColorModeValue } from '@chakra-ui/react';
+import { ChatIcon } from '@chakra-ui/icons';
+import { Avatar, Box, Flex, HStack, IconButton } from '@chakra-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -29,18 +30,8 @@ const LocaleAvatar = () => {
   </Box>
 }
 
-const NavLink = ({ children }: { children: ReactNode }) => (
-  <Link
-    // @ts-ignore
-    px={'2'}
-    py={'1'}
-    rounded={'md'}
-    _hover={{
-      textDecoration: 'none',
-      bg: useColorModeValue('gray.200', 'gray.700'),
-    }}
-    // @ts-ignore
-    href={`/${children.toLowerCase()}`}>
+const NavLink = ({ children, href }: { children: ReactNode, href: string }) => (
+  <Link href={href}>
     {children}
   </Link>
 );
@@ -54,16 +45,13 @@ const Menus = () => <HStack spacing={8} alignItems={'center'}>
     <Image src={'/logo.png'} width={40} height={40} />
   </Link>
 
-  <HS>
-    {['History'].map((link) => (
-      <NavLink key={link}>{link}</NavLink>
-    ))}
-  </HS>
-</HStack>
+  <NavLink href={'/history'}>
+    <IconButton aria-label='past echo' icon={<ChatIcon />} />
+  </NavLink>
+</HStack>;
 
 
 const Header = () => {
-
   return (
     <div>
       <Head>
