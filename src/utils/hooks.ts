@@ -9,7 +9,7 @@ export const useLocale = () => {
   const { locale } = router;
   const isEn = locale === 'en';
   return {
-    get: (k: string = '') => isEn ? en_dict[k] : zh_dict[k],
+    get: (k: string = '') => isEn ? en_dict[k] : zh_dict[k] || en_dict[k],
     getDict: isEn ? en_dict : zh_dict,
   }
 }

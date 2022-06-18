@@ -1,46 +1,38 @@
 
 import {
   Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+import { useLocale } from '../../../src/utils/hooks';
 
 
 export default () => {
+  const loc = useLocale();
 
+  const faqList = Array.from({ length: 4 }, (_, i) => [loc.get(`faq-q${i + 1}`), loc.get(`faq-a${i + 1}`)]);
+  console.log(faqList)
+  
   return <Box>
     <Accordion allowMultiple>
-  <AccordionItem>
-    <h2>
-      <AccordionButton>
-        <Box flex='1' textAlign='left'>
-          Section 1 title
-        </Box>
-        <AccordionIcon />
-      </AccordionButton>
-    </h2>
-    <AccordionPanel pb={4}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
-    </AccordionPanel>
-  </AccordionItem>
+      {faqList.map(([q,a]) => (
+        <AccordionItem>
+ 
 
-  <AccordionItem>
-    <h2>
+ <h2>
       <AccordionButton>
         <Box flex='1' textAlign='left'>
-          Section 2 title
+          {q}
         </Box>
         <AccordionIcon />
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat.
+      {a}
     </AccordionPanel>
-  </AccordionItem>
+
+
+
+          </AccordionItem>
+      ))}
 </Accordion>
   </Box>
 }
