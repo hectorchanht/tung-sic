@@ -19,8 +19,8 @@ const Home: NextPage = () => {
       <Marquee pauseOnHover pauseOnClick direction='right' gradient={false}>
         <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank" rel="noreferrer" >
           {/* <Image width={420} height={230} src={`/${isEn ? 'en' : 'zh'}-join.svg`} alt={'join whatsapp group now!'} /> */}
-          <code>
-            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨✨✨✨✨✨'}
+          <Box textOverflow={'ellipsis'}>
+            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
             <br />
             {loc.get('join')}
             <br />
@@ -28,8 +28,8 @@ const Home: NextPage = () => {
             <br />
             {loc.get('join')}
             <br />
-            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨✨✨✨✨✨'}
-          </code>
+            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
+          </Box>
         </a>
       </Marquee>
 
