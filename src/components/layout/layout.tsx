@@ -11,7 +11,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Box as={'main'} flex={1}>
         {children}
       </Box>
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   )
 }
