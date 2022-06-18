@@ -7,7 +7,7 @@ import { useLocale } from '../utils/hooks';
 
 const Faqs = () => {
   const loc = useLocale();
-  const faqList = Array.from({ length: 4 }, (_, i) => [loc.get(`faq-q${i + 1}`), loc.get(`faq-a${i + 1}`)]);
+  const faqList = Array.from({ length: 6 }, (_, i) => [loc.get(`faq-q${i + 1}`), loc.get(`faq-a${i + 1}`)]);
 
   return (
     <Box>

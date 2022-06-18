@@ -14,11 +14,11 @@ const Home: NextPage = () => {
 
       <Box as={'main'} flex={1}>
         <Box fontSize={'4em'}>
-          <a href="https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di">
-            Welcome to tung-sic
-          </a>
+          {loc.get('welcome')}
         </Box>
-
+        <Box as={'a'} justifyContent='center' href="https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di">
+          {loc.get('join')}
+        </Box>
 
         <h3>
           {loc.get('intro1')}

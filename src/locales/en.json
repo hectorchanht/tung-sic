@@ -1,4 +1,7 @@
 {
+  "welcome":"Welcome to tung-sic",
+  "join": "✨listen now using whatsapp! click me✨",
+
   "intro1": "stories sound fake but the loves/feelings/emotions are real, please enjoy yourself, recommendation and feedback are welcomed",
   "hidden-intro":"i will share my favorite music here, feel free to achieve/mute notification/leave group 🙏🏿",
   "intro2": "recommending featured music of your favorite artists to your friends",
@@ -10,5 +13,9 @@
   "faq-q3": "why not using Spotify playlist?",
   "faq-a3":"good idea, but i don't use Spotify ofterl,and now you got your music directly sent to whatsapp, one click and music plays",
   "faq-q4":"Why not daily song sharing plus some comments or descriptions",
-  "faq-a4":"too busy listening, no time for comments nor descriptions, please don't ask for that much for my fresh start, if i don't start it right away, it dies off"
+  "faq-a4":"too busy listening, no time for comments nor descriptions, please don't ask for that much for my fresh start, if i don't start it right away, it dies off",
+  "faq-q5": "why sending via whatsapp?",
+  "faq-a5":"it is the easiest and quickest way for me to build an idea in head within one night, please let me take me time and make it better maybe",
+  "faq-q6":"i like your music but the list is way too long for me to follow, can you recommend top 5 enlightening songs to me?",
+  "faq-a6":"sorry that i can not help you with that i have wide spectrum on music taste and i have do the filtering and choose the best songs the artist got for me. you can take your time and discover what you have never heard before"
 }
