@@ -1,54 +1,38 @@
+import { Box, Container } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Locale from '../src/components/locale-switcher'
 import Faqs from '../src/components/faq/faqs'
-import { Container } from '@chakra-ui/react'
+import Footer from '../src/components/layout/footer'
+import Header from '../src/components/layout/header'
 import { useLocale } from '../src/utils/hooks'
+
 
 const Home: NextPage = () => {
   const loc = useLocale();
   return (
-    <Container >
-      <Head>
-        <title>tung-sic</title>
-        <meta name="description" content="tung sharing music 24/7" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Container flexDirection={'column'}>
+      <Header />
 
-      <main  >
-      <Locale />
+      <Box as={'main'} flex={1}>
+        <Box fontSize={'4em'}>
+          <a href="https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di">
+            Welcome to tung-sic
+          </a>
+        </Box>
 
-        <h1  >
-          Welcome to <a href="https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di">tung-sic</a>
-        </h1>
-        
 
         <h3>
-          <center>
-            {loc.get('intro1') }
-            {/* {getLocaleJson('intro2', isEn)} */}
-            </center>
+          {loc.get('intro1')}
         </h3>
 
-        <br/>
-        <br/>
-        <br/>
+        <br />
+        <br />
+        <br />
 
-        <Faqs/>
-        
-      </main>
+        <Faqs />
 
-      <footer >
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by hector{' '}
-            {/* <Image src="/logo.png" alt="Logo" layout='fill'  /> */}
-        </a>
-      </footer>
+      </Box>
+
+      <Footer />
     </Container>
   )
 }
