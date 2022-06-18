@@ -10,7 +10,7 @@ type CallbackFunction = ({ pageIndex, pageSize  }:{ pageIndex: number, pageSize:
 
 const Pagination = ({ cb }: { cb: CallbackFunction }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
-  const [pageSize, setPageSize] = React.useState(10);
+  const [pageSize, setPageSize] = React.useState(6);
   const maxPage = Math.ceil(data.length / pageSize);
 
   React.useEffect(() => {
@@ -72,7 +72,7 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
           setPageSize(Number(e.target.value));
         }}
       >
-        {[10, 20, 30, 40, 50].map((pageSize) => (
+        {[6, 12, 24,48,96].map((pageSize) => (
           <option key={pageSize} value={pageSize}>
             Show {pageSize}
           </option>
