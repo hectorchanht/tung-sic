@@ -11,34 +11,26 @@ const Home: NextPage = () => {
   const { isEn } = useLang();
   return (
     <Layout>
-      
-        <Box fontSize={'3em'} textAlign='center'>
-          {loc.get('welcome')}
-        </Box>
 
-        <Marquee pauseOnHover pauseOnClick direction='right' gradient={false}>
-          <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank" rel="noreferrer" >
-            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
-            <br />
-            {loc.get('join')}
-            <br />
-            {loc.get('join')}
-            <br />
-            {loc.get('join')}
-            <br />
-            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
-          </a>
-        </Marquee>
+      <Box fontSize={'3em'} textAlign='center'>
+        {loc.get('welcome')}
+      </Box>
 
-        <Box fontWeight={800} textAlign='center'>
-          {loc.get('intro1')}
-        </Box>
+      <Marquee pauseOnHover pauseOnClick direction='right' gradient={false}>
+        <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank" rel="noreferrer" >
+          <img src={`/${isEn ? 'en' : 'zh'}-join.svg`} alt={'join whatsapp group now!'} />
+        </a>
+      </Marquee>
 
-        <br />
-        <br />
-        <br />
+      <Box fontWeight={800} textAlign='center'>
+        {loc.get('intro1')}
+      </Box>
 
-        <Faqs />
+      <br />
+      <br />
+      <br />
+
+      <Faqs />
 
     </Layout>
   )
