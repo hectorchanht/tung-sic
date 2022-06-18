@@ -45,9 +45,7 @@ const NavLink = ({ children }: { children: ReactNode }) => (
   </Link>
 );
 
-const HS = ({ children }: { children: ReactNode }) => <HStack
-  spacing={4}
-  display={{ base: 'none', md: 'flex' }}>
+const HS = ({ children }: { children: ReactNode }) => <HStack spacing={4}>
   {children}
 </HStack >;
 
