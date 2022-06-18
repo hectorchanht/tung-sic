@@ -1,11 +1,14 @@
-import { Flex, IconButton, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Text, Tooltip } from '@chakra-ui/react';
-import React from 'react';
-import data from '../../public/parsed-record.json';
 import {
   ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon
 } from "@chakra-ui/icons";
+import { Flex, IconButton, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Text, Tooltip } from '@chakra-ui/react';
+import React from 'react';
+import data from '../../public/parsed-record.json';
 
-const Pagination = ({ cb }) => {
+
+type CallbackFunction = ({ pageIndex, pageSize  }:{ pageIndex: number, pageSize: number }) => void;
+
+const Pagination = ({ cb }: { cb: CallbackFunction }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
   const [pageSize, setPageSize] = React.useState(10);
   const maxPage = Math.ceil(data.length / pageSize);
@@ -18,6 +21,7 @@ const Pagination = ({ cb }) => {
     <Flex>
       <Tooltip label="First Page">
         <IconButton
+          aria-label={'first-page'}
           onClick={() => setPageIndex(0)}
           isDisabled={pageIndex <= 0}
           icon={<ArrowLeftIcon h={3} w={3} />}
@@ -26,6 +30,7 @@ const Pagination = ({ cb }) => {
       </Tooltip>
       <Tooltip label="Previous Page">
         <IconButton
+          aria-label={'previous-page'}
           onClick={() => setPageIndex(d => d - 1)}
           isDisabled={pageIndex <= 0}
           icon={<ChevronLeftIcon h={6} w={6} />}
@@ -51,7 +56,7 @@ const Pagination = ({ cb }) => {
         w={28}
         min={1}
         max={maxPage}
-        value={pageIndex+1}
+        value={pageIndex + 1}
         onChange={(value) => setPageIndex(!!value ? Number(value) - 1 : 0)}
       >
         <NumberInputField />
@@ -78,15 +83,17 @@ const Pagination = ({ cb }) => {
     <Flex>
       <Tooltip label="Next Page">
         <IconButton
+          aria-label={'next-page'}
           onClick={() => setPageIndex(d => d + 1)}
-          // isDisabled={!canNextPage}
+          isDisabled={pageIndex >= maxPage}
           icon={<ChevronRightIcon h={6} w={6} />}
         />
       </Tooltip>
       <Tooltip label="Last Page">
         <IconButton
-          // onClick={() => gotoPage(pageCount - 1)}
-          // isDisabled={!canNextPage}
+          aria-label={'last-page'}
+          onClick={() => setPageIndex(maxPage)}
+          isDisabled={pageIndex >= maxPage}
           icon={<ArrowRightIcon h={3} w={3} />}
           ml={4}
         />

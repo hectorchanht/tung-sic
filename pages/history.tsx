@@ -9,7 +9,6 @@ import Video from '../src/components/video';
 const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
 const HistoryPage = () => {
-  const [onlyShowDj, setOnlyShowDj] = React.useState(true);
   const [{ hideFeedback, hideText }, setHide] = React.useState({ hideFeedback: false, hideText: false });
   const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 10 });
 
@@ -42,7 +41,7 @@ const HistoryPage = () => {
         } else {
           if (!isDj && hideFeedback || hideText) return ;
           if (message.includes('\n')) {
-            return message.split('\n').map(d => <p>{d}</p>)
+            return message.split('\n').map(d => <p key={d}>{d}</p>)
           } else {
             return <p>{message}</p>
           }
