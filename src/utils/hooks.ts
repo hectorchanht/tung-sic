@@ -12,3 +12,13 @@ export const useLocale = () => {
     getDict: isEn ? en_dict : zh_dict,
   }
 }
+
+export const useLang = () => {
+  const router = useRouter();
+  const { locale } = router;
+
+  return {
+    lang: locale,
+    isEn: locale === 'en'
+  }
+}

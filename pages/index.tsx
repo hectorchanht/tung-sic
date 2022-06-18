@@ -4,11 +4,12 @@ import Marquee from "react-fast-marquee"
 import Faqs from '../src/components/faqs'
 import Footer from '../src/components/layout/footer'
 import Header from '../src/components/layout/header'
-import { useLocale } from '../src/utils/hooks'
+import { useLang, useLocale } from '../src/utils/hooks'
 
 
 const Home: NextPage = () => {
   const loc = useLocale();
+  const { isEn } = useLang();
   return (
     <Container display={'flex'} flexDirection={'column'} height={'100vh'}>
       <Header />
@@ -20,7 +21,7 @@ const Home: NextPage = () => {
 
         <Marquee pauseOnHover pauseOnClick direction='right' gradient={false}>
           <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank">
-            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
             <br />
             {loc.get('join')}
             <br />
@@ -28,7 +29,7 @@ const Home: NextPage = () => {
             <br />
             {loc.get('join')}
             <br />
-            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨
+            ✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
           </a>
         </Marquee>
 
