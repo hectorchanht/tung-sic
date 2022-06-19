@@ -1,5 +1,5 @@
 import { ChatIcon } from '@chakra-ui/icons';
-import { Avatar, Box, Circle, Flex, HStack, IconButton } from '@chakra-ui/react';
+import { Box, Flex, HStack, IconButton } from '@chakra-ui/react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,7 +8,7 @@ import { ReactNode } from 'react';
 import ThemeSwitchBtn from './themeSwitchBtn';
 
 
-const LocaleAvatar = () => {
+const LocaleSwitcher = () => {
   const router = useRouter();
   const { locales, locale: activeLocale } = router;
   const otherLocales = locales && locales.filter((locale) => locale !== activeLocale);
@@ -40,16 +40,6 @@ const HS = ({ children }: { children: ReactNode }) => <HStack spacing={4}>
   {children}
 </HStack >;
 
-const Menus = () => <HStack spacing={8} alignItems={'center'}>
-  <Link href="/">
-    <Image src={'/logo.png'} width={40} height={40} alt={'logo'}/>
-  </Link>
-
-  <NavLink href={'/history'}>
-    <IconButton variant='ghost' aria-label='past echo' icon={<ChatIcon />} />
-  </NavLink>
-</HStack>;
-
 const Header = () => {
   return (
     <div>
@@ -60,11 +50,18 @@ const Header = () => {
       </Head>
 
       <Flex as={'nav'} h={16} alignItems={'center'} justifyContent={'space-between'}>
-        <Menus />
+        <HS>
+          <Box as={'a'} href='/'>
+            <Image src={'/logo.png'} width={40} height={40} alt={'logo'} />
+          </Box>
 
+          <NavLink href={'/history'}>
+            <IconButton variant='ghost' aria-label='past echo' icon={<ChatIcon />} />
+          </NavLink>
+        </HS>
         <HS>
           <ThemeSwitchBtn />
-          <LocaleAvatar />
+          <LocaleSwitcher />
         </HS>
       </Flex>
     </div>
