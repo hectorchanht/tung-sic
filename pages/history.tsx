@@ -7,7 +7,7 @@ import Pagination from '../src/components/pagination';
 import Video from '../src/components/video';
 
 
-const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
 const HistoryPage = () => {
   const [{ hideFeedback, hideText }, setHide] = React.useState({ hideFeedback: true, hideText: false });
@@ -19,16 +19,15 @@ const HistoryPage = () => {
       d = d.filter(({ message }) => message.match(urlRegex));
     }
     else if (hideFeedback) {
-      d = d.filter(({ isDj }) => isDj );
+      d = d.filter(({ isDj }) => isDj);
     }
 
     return d.slice(pageIndex * pageSize, ((pageIndex + 1) * pageSize))
   }, [pageIndex, pageSize, hideFeedback, hideText]);
 
   return <Layout>
-    <Pagination cb={(d: { pageIndex: number, pageSize: number }) => {
-      setPage(d);
-    }} />
+    <Pagination hideFeedback={hideFeedback} hideText={hideText}
+      cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)} />
 
     <Flex justifyContent={'center'} m={4}>
       <Tooltip label="hide comment, only showing posts from DJ">
@@ -55,7 +54,7 @@ const HistoryPage = () => {
           return <Video link={message} key={id} />
         } else {
           if (message.includes('\n')) {
-            return message.split('\n').map((d,di) => <p key={d+di}>{d}</p>)
+            return message.split('\n').map((d, di) => <p key={d + di}>{d}</p>)
           } else {
             return <p key={id}>{message}</p>
           }
