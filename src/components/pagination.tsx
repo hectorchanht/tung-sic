@@ -6,10 +6,10 @@ import { urlRegex } from "../../pages/history";
 import data from '../../public/parsed-record.json';
 
 type CallbackFunction = ({ pageIndex, pageSize }: { pageIndex: number, pageSize: number }) => void;
-
+const pageSizeOptions = [6, 12, 24, 48, 96];
 const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hideFeedback: Boolean, hideText: Boolean }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
-  const [pageSize, setPageSize] = React.useState(12);
+  const [pageSize, setPageSize] = React.useState(pageSizeOptions[1]);
   const maxPage = React.useMemo(() => {
     if (hideText) {
       const itemCount = data.filter(({ message }) => message.match(urlRegex)).length;
@@ -30,7 +30,7 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
     if (pageIndex > maxPage) {
       setPageIndex(maxPage - 1)
     }
-  }, [hideFeedback, hideText, pageSize])
+  }, [hideFeedback, hideText, pageSize, maxPage, pageIndex])
 
   const debouncedSetPageIndex = debounce(setPageIndex, 300, { leading: true, maxWait: 420, trailing: true });
 
@@ -84,13 +84,12 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
 
         <WrapItem>
           <Select
-            // w={32}
             value={pageSize}
             onChange={(e) => {
               setPageSize(Number(e.target.value));
             }}
           >
-            {[12, 24, 48, 96].map((pageSize) => (
+            {pageSizeOptions.map((pageSize) => (
               <option key={pageSize} value={pageSize}>
                 #{pageSize}
               </option>
