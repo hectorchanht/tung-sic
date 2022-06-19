@@ -12,12 +12,12 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
   const [pageSize, setPageSize] = React.useState(12);
   const maxPage = React.useMemo(() => {
     if (hideText) {
-      const textCount = data.filter(({ message }) => message.match(urlRegex));
-      return Math.ceil((textCount.length) / pageSize)
+      const itemCount = data.filter(({ message }) => message.match(urlRegex)).length;
+      return Math.ceil(itemCount / pageSize)
     }
     else if (hideFeedback) {
-      const textCount = data.filter(({ isDj }) => isDj);
-      return Math.ceil(( textCount.length) / pageSize)
+      const itemCount = data.filter(({ isDj }) => isDj).length;
+      return Math.ceil(itemCount / pageSize)
     }
     return Math.ceil(data.length / pageSize)
   }, [hideFeedback, hideText, pageSize]);
@@ -25,6 +25,12 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
   React.useEffect(() => {
     cb && cb({ pageIndex, pageSize })
   }, [pageIndex, pageSize, cb]);
+
+  React.useEffect(() => {
+    if (pageIndex > maxPage) {
+      setPageIndex(maxPage - 1)
+    }
+  }, [hideFeedback, hideText, pageSize])
 
   const debouncedSetPageIndex = debounce(setPageIndex, 300, { leading: true, maxWait: 420, trailing: true });
 
