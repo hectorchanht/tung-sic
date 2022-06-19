@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         {loc.get('welcome')}
       </Box>
 
-      <Marquee pauseOnHover pauseOnClick direction='right' gradient={false}>
+      <Marquee direction="left" pauseOnHover pauseOnClick gradient={false}>
         <a href='https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di' target="_blank" rel="noreferrer" >
           {/* <Image width={420} height={230} src={`/${isEn ? 'en' : 'zh'}-join.svg`} alt={'join whatsapp group now!'} /> */}
           <Box textOverflow={'ellipsis'} fontSize={30}>
