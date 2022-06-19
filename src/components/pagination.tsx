@@ -1,5 +1,5 @@
-import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Center, IconButton, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text, Tooltip, Wrap, WrapItem } from '@chakra-ui/react';
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { Center, IconButton, Input, InputGroup, InputRightAddon, Select, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Tooltip, Wrap, WrapItem } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import React from 'react';
 import data from '../../public/parsed-record.json';
@@ -32,7 +32,7 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
     <Center>
       <Wrap>
         <WrapItem>
-          <Tooltip label="First Page">
+          {/* <Tooltip label="First Page">
             <IconButton
               aria-label={'first-page'}
               onClick={() => setPageIndex(0)}
@@ -40,7 +40,7 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
               icon={<ArrowLeftIcon h={3} w={3} />}
               mr={4}
             />
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip label="Previous Page">
             <IconButton
               aria-label={'previous-page'}
@@ -51,36 +51,17 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
           </Tooltip>
         </WrapItem>
 
-        <WrapItem alignItems="center">
-          <Text flexShrink="0" mr={8}>
-            {/* Page{" "} */}
-            <Text fontWeight="bold" as="span">
-              {pageIndex + 1}
-            </Text>{" "}
-            /{" "}
-            <Text fontWeight="bold" as="span">
-              {maxPage}
-            </Text>
-          </Text>
-          {/* <Text flexShrink="0">Go to:</Text>{" "} */}
-        </WrapItem>
+        <WrapItem alignItems={'center'}>
+          <InputGroup>
+            <Input value={pageIndex + 1} w={20} min={1} max={maxPage}
+              onChange={(value) => {
+                const v = Number(value.target.value)
+                if (v > maxPage) return;
 
-        <WrapItem>
-          <NumberInput
-            ml={2}
-            mr={8}
-            w={28}
-            min={1}
-            max={maxPage}
-            value={pageIndex + 1}
-            onChange={(value) => setPageIndex(!!value ? Number(value) - 1 : 0)}
-          >
-            <NumberInputField />
-            {/* <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper> */}
-          </NumberInput>
+                setPageIndex(!!v ? (v - 1) : 0)
+              }} />
+            <InputRightAddon children={`/ ${maxPage}`} />
+          </InputGroup>
         </WrapItem>
 
         <WrapItem>
@@ -108,7 +89,7 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
               icon={<ChevronRightIcon h={6} w={6} />}
             />
           </Tooltip>
-          <Tooltip label="Last Page">
+          {/* <Tooltip label="Last Page">
             <IconButton
               aria-label={'last-page'}
               onClick={() => setPageIndex(maxPage - 1)}
@@ -116,7 +97,7 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
               icon={<ArrowRightIcon h={3} w={3} />}
               ml={4}
             />
-          </Tooltip>
+          </Tooltip> */}
         </WrapItem>
       </Wrap>
     </Center>
