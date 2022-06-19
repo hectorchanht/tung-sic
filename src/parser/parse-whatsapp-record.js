@@ -39,7 +39,7 @@ const parseRawWhatsappRecord = async (filename = 'raw-whatsapp-record.txt') => {
         id: nanoid()
       }
     }).filter((d) => {
-      return !!d
+      return !!d?.message || !!d
     })
 
     fs.writeFile("../../public/parsed-record.json", JSON.stringify(parsedData), function (err, result) {
