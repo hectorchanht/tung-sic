@@ -2,14 +2,25 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Center, IconButton, Input, InputGroup, InputRightAddon, Select, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Tooltip, Wrap, WrapItem } from '@chakra-ui/react';
 import { debounce } from 'lodash';
 import React from 'react';
+import { urlRegex } from "../../pages/history";
 import data from '../../public/parsed-record.json';
 
 type CallbackFunction = ({ pageIndex, pageSize }: { pageIndex: number, pageSize: number }) => void;
 
-const Pagination = ({ cb }: { cb: CallbackFunction }) => {
+const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hideFeedback: Boolean, hideText: Boolean }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
   const [pageSize, setPageSize] = React.useState(12);
-  const maxPage = Math.ceil(data.length / pageSize);
+  const maxPage = React.useMemo(() => {
+    if (hideText) {
+      const textCount = data.filter(({ message }) => message.match(urlRegex));
+      return Math.ceil((textCount.length) / pageSize)
+    }
+    else if (hideFeedback) {
+      const textCount = data.filter(({ isDj }) => isDj);
+      return Math.ceil(( textCount.length) / pageSize)
+    }
+    return Math.ceil(data.length / pageSize)
+  }, [hideFeedback, hideText, pageSize]);
 
   React.useEffect(() => {
     cb && cb({ pageIndex, pageSize })
