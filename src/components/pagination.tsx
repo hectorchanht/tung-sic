@@ -13,13 +13,12 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
 
   React.useEffect(() => {
     cb && cb({ pageIndex, pageSize })
-  }, [pageIndex, pageSize]);
+  }, [pageIndex, pageSize, cb]);
 
   const debouncedSetPageIndex = debounce(setPageIndex, 300, { leading: true, maxWait: 420, trailing: true });
 
   return <>
     <Slider
-      onChangeEnd={(val) => console.log(val)}
       onChange={d => setPageIndex(d)}
       aria-label='page-slider' value={pageIndex} min={0} max={maxPage - 1}
     >
@@ -60,7 +59,9 @@ const Pagination = ({ cb }: { cb: CallbackFunction }) => {
 
                 setPageIndex(!!v ? (v - 1) : 0)
               }} />
-            <InputRightAddon children={`/ ${maxPage}`} />
+            <InputRightAddon >
+              / {maxPage}
+            </InputRightAddon>
           </InputGroup>
         </WrapItem>
 

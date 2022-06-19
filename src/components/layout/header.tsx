@@ -22,7 +22,7 @@ const LocaleAvatar = () => {
       return (
         <Link key={locale} href={{ pathname, query }} as={asPath} locale={locale}>
           <a>
-            <Image width={40} height={40} src={isEn ? '/hk.svg' : '/en.svg'} />
+            <Image width={40} height={40} src={isEn ? '/hk.svg' : '/en.svg'} alt={'locales selector'} />
           </a>
         </Link>
       )
@@ -42,7 +42,7 @@ const HS = ({ children }: { children: ReactNode }) => <HStack spacing={4}>
 
 const Menus = () => <HStack spacing={8} alignItems={'center'}>
   <Link href="/">
-    <Image src={'/logo.png'} width={40} height={40} />
+    <Image src={'/logo.png'} width={40} height={40} alt={'logo'}/>
   </Link>
 
   <NavLink href={'/history'}>
