@@ -6,7 +6,7 @@ const nextConfig = {
     defaultLocale: 'en',
   },
   images: {
-    domains: ['img.youtube.com'],
+    domains: ['img.youtube.com', 'i.ytimg.com'],
   },
 }
 
