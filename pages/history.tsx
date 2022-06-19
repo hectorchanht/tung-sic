@@ -62,6 +62,10 @@ const HistoryPage = () => {
         }
       })}
     </SimpleGrid>
+
+    <Pagination hideFeedback={hideFeedback} hideText={hideText}
+      cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)} />
+    <br />
   </Layout>
 }
 
