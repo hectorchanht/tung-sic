@@ -63,7 +63,7 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
 
         <WrapItem alignItems={'center'}>
           <InputGroup>
-            <Input value={pageIndex + 1} w={20} min={1} max={maxPage}
+            <Input value={pageIndex + 1} w={16} min={1} max={maxPage}
               onChange={(value) => {
                 const v = Number(value.target.value)
                 if (v > maxPage) return;
@@ -78,7 +78,7 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
 
         <WrapItem>
           <Select
-            w={32}
+            // w={32}
             value={pageSize}
             onChange={(e) => {
               setPageSize(Number(e.target.value));
@@ -86,7 +86,7 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
           >
             {[12, 24, 48, 96].map((pageSize) => (
               <option key={pageSize} value={pageSize}>
-                Show {pageSize}
+                #{pageSize}
               </option>
             ))}
           </Select>
