@@ -50,6 +50,7 @@ const HistoryPage = () => {
 
     <SimpleGrid columns={2} spacing={2}>
       {filteredData.map(({ datetime, isDj, message, id }) => {
+        // todo: add show datetime for each day period or story
         // if (message.length === 0) return;  // null data is catch in parsing
         if (message.match(urlRegex)) {
           return <Video link={message} key={id} />
@@ -62,10 +63,6 @@ const HistoryPage = () => {
         }
       })}
     </SimpleGrid>
-
-    <Pagination hideFeedback={hideFeedback} hideText={hideText}
-      cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)} />
-    <br />
   </Layout>
 }
 
