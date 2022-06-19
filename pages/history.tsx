@@ -6,15 +6,28 @@ import Layout from "../src/components/layout/layout";
 import Pagination from '../src/components/pagination';
 import Video from '../src/components/video';
 
+
 const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
 const HistoryPage = () => {
   const [{ hideFeedback, hideText }, setHide] = React.useState({ hideFeedback: false, hideText: false });
-  const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 10 });
+  const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 6 });
 
-  const filteredData = React.useMemo(() => data.slice(
-    pageIndex * pageSize, ((pageIndex + 1) * pageSize)
-  ), [pageIndex, pageSize]);
+  const filteredData = React.useMemo(() => {
+    let d = [...data];
+    if (hideText) {
+      d = d.filter(({ datetime, isDj, message, id }) => message.match(urlRegex));
+    }
+    else if (hideFeedback) {
+      d = d.filter(({ datetime, isDj, message, id }) =>isDj );
+    }
+
+    return d.slice(pageIndex * pageSize, ((pageIndex + 1) * pageSize))
+  }, [pageIndex, pageSize, hideFeedback, hideText]);
+
+  // const filteredData = data.slice(
+  //   pageIndex * pageSize, ((pageIndex + 1) * pageSize)
+  // );
 
   return <Layout>
     <Pagination cb={(d: { pageIndex: number, pageSize: number }) => {
@@ -40,17 +53,16 @@ const HistoryPage = () => {
     </Flex>
 
     <SimpleGrid columns={2} spacing={2}>
-      {filteredData.map(({ datetime, isDj, message }, i) => {
-        const k = datetime + message + i;
+      {filteredData.map(({ datetime, isDj, message, id }) => {
         if (message.length === 0) return;
         if (message.match(urlRegex)) {
-          return <Video link={message} key={k} />
+          return <Video link={message} key={id} />
         } else {
-          if (!isDj && hideFeedback || hideText) return;
+          // if (!isDj && hideFeedback || hideText) return;
           if (message.includes('\n')) {
-            return message.split('\n').map(d => <p key={k}>{d}</p>)
+            return message.split('\n').map(d => <p key={id}>{d}</p>)
           } else {
-            return <p key={k}>{message}</p>
+            return <p key={id}>{message}</p>
           }
         }
       })}
