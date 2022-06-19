@@ -3,7 +3,7 @@ const fs = require('fs');
 const moment = require('moment');
 
 
-const djName = '東'
+ export const djName = '東'
 
 const parseRawWhatsappRecord = async (filename = 'raw-whatsapp-record.txt') => {
   const { nanoid } = await import('nanoid');
