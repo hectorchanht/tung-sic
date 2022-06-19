@@ -33,6 +33,7 @@ const HistoryPage = () => {
       <Tooltip label="hide comment, only showing posts from DJ">
         <IconButton
           aria-label={'hide-comment'}
+          disabled={hideText}
           onClick={() => setHide(d => ({ ...d, hideFeedback: !d.hideFeedback }))}
           icon={hideFeedback ? <ViewIcon /> : <ViewOffIcon />}
         />
