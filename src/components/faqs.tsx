@@ -4,10 +4,11 @@ import {
 } from '@chakra-ui/react';
 import { useLocale } from '../utils/hooks';
 
+const faqsLength = 7;
 
 const Faqs = () => {
   const loc = useLocale();
-  const faqList = Array.from({ length: 6 }, (_, i) => [loc.get(`faq-q${i + 1}`), loc.get(`faq-a${i + 1}`)]);
+  const faqList = Array.from({ length: faqsLength }, (_, i) => [loc.get(`faq-q${i + 1}`), loc.get(`faq-a${i + 1}`)]);
 
   return (
     <Box>
