@@ -18,10 +18,11 @@ const Video = ({ link }: { link: string }) => {
 
   // @ts-ignore
   const id = link.split('v=').pop().slice(0, 11);
+  const getInfo =()=> isEmpty(videoInfo) && getYtInfo(id).then(setVideoInfo);
 
   return (
     <Box>
-      <a onMouseOver={() => isEmpty(videoInfo) && getYtInfo(id).then(setVideoInfo)} href={link} target="_blank" rel="noreferrer">
+      <a onMouseOver={getInfo} onTouchStart={getInfo} href={link} target="_blank" rel="noreferrer">
         <Image height={352} width={470} src={`https://img.youtube.com/vi/${id}/0.jpg`} alt={'youtube thumbnail'} />
       </a>
       {!isEmpty(videoInfo) && (
