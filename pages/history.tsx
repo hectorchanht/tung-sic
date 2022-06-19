@@ -10,7 +10,7 @@ import Video from '../src/components/video';
 const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
 const HistoryPage = () => {
-  const [{ hideFeedback, hideText }, setHide] = React.useState({ hideFeedback: false, hideText: false });
+  const [{ hideFeedback, hideText }, setHide] = React.useState({ hideFeedback: true, hideText: false });
   const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 6 });
 
   const filteredData = React.useMemo(() => {
