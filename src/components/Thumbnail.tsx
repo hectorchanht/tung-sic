@@ -1,5 +1,5 @@
 // https://gist.github.com/protrolium/8831763
-import { Box } from '@chakra-ui/react';
+import { Badge, Box } from '@chakra-ui/react';
 import { isEmpty } from 'lodash';
 import Image from 'next/image';
 import React from 'react';
@@ -31,13 +31,17 @@ const Thumbnail = ({ link }: { link: string }) => {
             {/* @ts-ignore */}
             {videoInfo?.items?.[0]?.snippet?.title}
           </Box>
-          <Box>
+
+          <Badge>
             {/* @ts-ignore */}
-            @{videoInfo?.items?.[0]?.snippet?.channelTitle}
+            <a href={`https://www.youtube.com/channel/${videoInfo?.items?.[0]?.snippet?.channelId}`}>
+              {/* @ts-ignore */}
+              @{videoInfo?.items?.[0]?.snippet?.channelTitle}
+            </a>
             {' '}
             {/* @ts-ignore */}
             ({videoInfo?.items?.[0]?.snippet?.publishedAt.slice(0, 10)})
-          </Box>
+          </Badge>
         </Box>)}
     </Box>
   )

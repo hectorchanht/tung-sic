@@ -5,9 +5,13 @@ import React from 'react';
 import { urlRegex } from "../../pages/history";
 import data from '../../public/parsed-record.json';
 
+
 type CallbackFunction = ({ pageIndex, pageSize }: { pageIndex: number, pageSize: number }) => void;
+
 const pageSizeOptions = [6, 12, 24, 48, 96];
-const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hideFeedback: Boolean, hideText: Boolean }) => {
+
+
+const Paginator = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hideFeedback: Boolean, hideText: Boolean }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
   const [pageSize, setPageSize] = React.useState(pageSizeOptions[1]);
   const maxPage = React.useMemo(() => {
@@ -125,4 +129,4 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
   </>
 };
 
-export default Pagination;
+export default Paginator;

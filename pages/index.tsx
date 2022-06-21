@@ -1,8 +1,8 @@
 import { Box } from '@chakra-ui/react'
 import type { NextPage } from 'next'
 import Marquee from "react-fast-marquee"
-import Faqs from '../src/components/FAQ'
-import Layout from '../src/components/layout/Layout'
+import FAQ from '../src/components/FAQ'
+import Layout from '../src/components/layout'
 import { useLang, useLocale } from '../src/utils/hooks'
 
 
@@ -37,7 +37,7 @@ const Home: NextPage = () => {
       <br />
       <br />
 
-      <Faqs />
+      <FAQ />
 
     </Layout>
   )

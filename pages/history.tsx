@@ -2,8 +2,8 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Flex, IconButton, SimpleGrid, Tooltip } from '@chakra-ui/react';
 import React from 'react';
 import data from '../public/parsed-record.json';
-import Layout from "../src/components/layout/Layout";
-import Pagination from '../src/components/Paginator';
+import Layout from "../src/components/layout";
+import Paginator from '../src/components/Paginator';
 import Thumbnail from '../src/components/Thumbnail';
 
 
@@ -26,7 +26,7 @@ const HistoryPage = () => {
   }, [pageIndex, pageSize, hideFeedback, hideText]);
 
   return <Layout>
-    <Pagination hideFeedback={hideFeedback} hideText={hideText}
+    <Paginator hideFeedback={hideFeedback} hideText={hideText}
       cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)} />
 
     <Flex justifyContent={'center'} m={4}>
