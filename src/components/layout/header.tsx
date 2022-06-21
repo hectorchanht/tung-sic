@@ -4,8 +4,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import LocaleSwitcher from './LocaleSwitcher';
-import ThemeSwitchBtn from './ThemeSwitch';
+import LocaleSwitcher from './localeSwitcher';
+import ThemeSwitch from './themeSwitch';
 
 
 const NavLink = ({ children, href }: { children: ReactNode, href: string }) => (
@@ -38,7 +38,7 @@ const Header = () => {
           </NavLink>
         </HS>
         <HS>
-          <ThemeSwitchBtn />
+          <ThemeSwitch />
           <LocaleSwitcher />
         </HS>
       </Flex>

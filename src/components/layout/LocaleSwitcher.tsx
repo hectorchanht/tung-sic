@@ -1,11 +1,7 @@
-import { ChatIcon } from '@chakra-ui/icons';
-import { Box, Flex, HStack, IconButton } from '@chakra-ui/react';
-import Head from 'next/head';
+import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ReactNode } from 'react';
-import ThemeSwitchBtn from './ThemeSwitch';
 
 
 const LocaleSwitcher = () => {

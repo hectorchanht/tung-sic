@@ -3,8 +3,8 @@ import { Flex, IconButton, SimpleGrid, Tooltip } from '@chakra-ui/react';
 import React from 'react';
 import data from '../public/parsed-record.json';
 import Layout from "../src/components/layout";
-import Paginator from '../src/components/Paginator';
-import Thumbnail from '../src/components/Thumbnail';
+import Paginator from '../src/components/paginator';
+import Thumbnail from '../src/components/thumbnail';
 
 
 export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
