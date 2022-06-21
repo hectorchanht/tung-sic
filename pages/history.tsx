@@ -3,7 +3,6 @@ import { Flex, IconButton, SimpleGrid, Tooltip } from '@chakra-ui/react';
 import React from 'react';
 import data from '../public/parsed-record.json';
 import Layout from "../src/components/layout";
-// @ts-ignore  
 import Paginator from '../src/components/paginator';
 import Thumbnail from '../src/components/thumbnail';
 
