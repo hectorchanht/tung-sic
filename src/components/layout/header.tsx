@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
-import ThemeSwitchBtn from './themeSwitchBtn';
+import ThemeSwitchBtn from './ThemeSwitch';
 
 
 const LocaleSwitcher = () => {

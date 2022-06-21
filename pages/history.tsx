@@ -2,9 +2,9 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Flex, IconButton, SimpleGrid, Tooltip } from '@chakra-ui/react';
 import React from 'react';
 import data from '../public/parsed-record.json';
-import Layout from "../src/components/layout/layout";
-import Pagination from '../src/components/pagination';
-import Video from '../src/components/video';
+import Layout from "../src/components/layout/Layout";
+import Pagination from '../src/components/Paginator';
+import Thumbnail from '../src/components/Thumbnail';
 
 
 export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
@@ -53,7 +53,7 @@ const HistoryPage = () => {
         // todo: add show datetime for each day period or story
         // if (message.length === 0) return;  // null data is catch in parsing
         if (message.match(urlRegex)) {
-          return <Video link={message} key={id} />
+          return <Thumbnail link={message} key={id} />
         } else {
           if (message.includes('\n')) {
             return message.split('\n').map((d, di) => <p key={d + di}>{d}</p>)

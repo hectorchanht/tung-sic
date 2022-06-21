@@ -1,7 +1,7 @@
 import { Box, Container } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import Footer from "./footer";
-import Header from "./header";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const Layout = ({ children }: { children: ReactNode }) => {
 

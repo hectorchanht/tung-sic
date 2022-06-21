@@ -30,7 +30,11 @@ const Pagination = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hide
     if (pageIndex > maxPage) {
       setPageIndex(maxPage - 1)
     }
-  }, [hideFeedback, hideText, pageSize, maxPage, pageIndex])
+
+    // todo: relocate to new page of the past first item
+    console.log(` pagination.tsx --- pageIndex:`, pageIndex, pageIndex * pageSize, data[pageIndex * pageSize], data)
+
+  }, [hideFeedback, hideText, maxPage, pageIndex])
 
   const debouncedSetPageIndex = debounce(setPageIndex, 300, { leading: true, maxWait: 420, trailing: true });
 

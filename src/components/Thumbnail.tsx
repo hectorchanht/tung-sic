@@ -10,7 +10,7 @@ const getYtInfo = (id = '') => fetch(`https://www.googleapis.com/youtube/v3/vide
 //   return d;
 // })
 
-const Video = ({ link }: { link: string }) => {
+const Thumbnail = ({ link }: { link: string }) => {
   const [videoInfo, setVideoInfo] = React.useState({});
 
   if (!(['youtu.be', 'youtube.com'].some(domain => link.includes(domain)))) return null;
@@ -18,7 +18,7 @@ const Video = ({ link }: { link: string }) => {
 
   // @ts-ignore
   const id = link.split('v=').pop().slice(0, 11);
-  const getInfo =()=> isEmpty(videoInfo) && getYtInfo(id).then(setVideoInfo);
+  const getInfo = () => isEmpty(videoInfo) && getYtInfo(id).then(setVideoInfo);
 
   return (
     <Box>
@@ -43,4 +43,4 @@ const Video = ({ link }: { link: string }) => {
   )
 };
 
-export default Video;
+export default Thumbnail;
