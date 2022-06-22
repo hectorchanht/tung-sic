@@ -31,6 +31,12 @@ const Paginator = ({ cb, hideFeedback, hideText }:
     cb && cb({ pageIndex, pageSize })
   }, [pageIndex, pageSize, cb]);
 
+  React.useEffect(() => {
+    if (pageIndex > maxPage) {
+      setPageIndex(maxPage - 1)
+    }
+  }, [maxPage])
+
   // const debouncedSetPageIndex = debounce(setPageIndex, 300, { leading: true, maxWait: 420, trailing: true });
 
   return <>
