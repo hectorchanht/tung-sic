@@ -24,8 +24,8 @@ const HistoryPage = () => {
     }
 
     if (previousId) {
-      setPreviousId('')
       const previousIdIndex = d.findIndex(({ message }) => { return message.includes(previousId) })
+      setPreviousId('')
       return d.slice(previousIdIndex, previousIdIndex+pageSize)
     }
 
