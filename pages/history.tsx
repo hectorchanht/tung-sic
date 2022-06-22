@@ -12,6 +12,7 @@ export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a
 const HistoryPage = () => {
   const [{ hideFeedback, hideText }, setHide] = React.useState({ hideFeedback: true, hideText: false });
   const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 6 });
+  const [previousId, setPreviousId] = React.useState('');
 
   const filteredData = React.useMemo(() => {
     let d = [...data];
@@ -20,6 +21,12 @@ const HistoryPage = () => {
     }
     else if (hideFeedback) {
       d = d.filter(({ isDj }) => isDj);
+    }
+
+    if (previousId) {
+      setPreviousId('')
+      const previousIdIndex = d.findIndex(({ message }) => { return message.includes(previousId) })
+      return d.slice(previousIdIndex, previousIdIndex+pageSize)
     }
 
     return d.slice(pageIndex * pageSize, ((pageIndex + 1) * pageSize))
@@ -53,12 +60,12 @@ const HistoryPage = () => {
         // todo: add show datetime for each day period or story
         // if (message.length === 0) return;  // null data is catch in parsing
         if (message.match(urlRegex)) {
-          return <Thumbnail link={message} key={id} />
+          return <Thumbnail link={message} key={id} cb={(id = '') => setPreviousId(id)} />
         } else {
           if (message.includes('\n')) {
-            return message.split('\n').map((d, di) => <p key={d + di}>{d}</p>)
+            return message.split('\n').map((d, di) => <p style={{ alignSelf: 'center' }} key={d + di}>{d}</p>)
           } else {
-            return <p key={id}>{message}</p>
+            return <p style={{ alignSelf: 'center' }} key={id}>{message}</p>
           }
         }
       })}

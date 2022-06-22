@@ -9,9 +9,17 @@ const getYtInfo = (id = '') => fetch(`https://www.googleapis.com/youtube/v3/vide
 // .then(d => {
 //   return d;
 // })
+type CallbackFunction = (id: string) => void;
 
-const Thumbnail = ({ link }: { link: string }) => {
+const Thumbnail = ({ link, cb }: { link: string, cb: CallbackFunction }) => {
   const [videoInfo, setVideoInfo] = React.useState({});
+
+  React.useEffect(() => {
+    if (!isEmpty(videoInfo)) {
+      // @ts-ignore
+      cb && cb(videoInfo?.items?.[0]?.id);
+    }
+  }, [videoInfo]);
 
   if (!(['youtu.be', 'youtube.com'].some(domain => link.includes(domain)))) return null;
   link = link.replace('https://youtu.be/', 'https://www.youtube.com/watch?v=');

@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Center, IconButton, Input, InputGroup, InputRightAddon, Select, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Tooltip, Wrap, WrapItem } from '@chakra-ui/react';
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash';
 import React from 'react';
 import { urlRegex } from "../../pages/history";
 import data from '../../public/parsed-record.json';
@@ -11,15 +11,16 @@ type CallbackFunction = ({ pageIndex, pageSize }: { pageIndex: number, pageSize:
 const pageSizeOptions = [6, 12, 24, 48, 96];
 
 
-const Paginator = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hideFeedback: Boolean, hideText: Boolean }) => {
+const Paginator = ({ cb, hideFeedback, hideText }:
+  { cb: CallbackFunction, hideFeedback: Boolean, hideText: Boolean }) => {
   const [pageIndex, setPageIndex] = React.useState(0);
   const [pageSize, setPageSize] = React.useState(pageSizeOptions[1]);
+
   const maxPage = React.useMemo(() => {
     if (hideText) {
       const itemCount = data.filter(({ message }) => message.match(urlRegex)).length;
       return Math.ceil(itemCount / pageSize)
-    }
-    else if (hideFeedback) {
+    } else if (hideFeedback) {
       const itemCount = data.filter(({ isDj }) => isDj).length;
       return Math.ceil(itemCount / pageSize)
     }
@@ -30,17 +31,7 @@ const Paginator = ({ cb, hideFeedback, hideText }: { cb: CallbackFunction, hideF
     cb && cb({ pageIndex, pageSize })
   }, [pageIndex, pageSize, cb]);
 
-  React.useEffect(() => {
-    if (pageIndex > maxPage) {
-      setPageIndex(maxPage - 1)
-    }
-
-    // todo: relocate to new page of the past first item
-    console.log(` pagination.tsx --- pageIndex:`, pageIndex, pageIndex * pageSize, data[pageIndex * pageSize], data)
-
-  }, [hideFeedback, hideText, maxPage, pageIndex])
-
-  const debouncedSetPageIndex = debounce(setPageIndex, 300, { leading: true, maxWait: 420, trailing: true });
+  // const debouncedSetPageIndex = debounce(setPageIndex, 300, { leading: true, maxWait: 420, trailing: true });
 
   return <>
     <Slider
