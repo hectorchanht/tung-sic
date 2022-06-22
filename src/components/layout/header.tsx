@@ -23,7 +23,7 @@ const Header = () => {
     <div>
       <Head>
         <title>tung-sic | music sharing 24/7</title>
-        <meta name="description" content="tung sharing music 24/7" />
+        <meta name="description" content="🎸 tung sharing music 24/7 🎸" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
