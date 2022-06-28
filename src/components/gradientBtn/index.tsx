@@ -4,11 +4,12 @@ import styles from './gradientBtn.module.css';
 const GradientBtn = ({ children, href, cls }: { children: ReactNode, href: string, cls?: string }) => {
 
   return (
-    <button className={styles[cls] || styles.btn}>
-      <a href={href} target="_blank" rel="noreferrer" >
+    <a href={href} target="_blank" rel="noreferrer" >
+      {/* @ts-ignore */}
+      <button className={styles?.[cls] || styles.btn}>
         {children}
-      </a>
-    </button>
+      </button>
+    </a>
   )
 }
 
