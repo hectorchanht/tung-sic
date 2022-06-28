@@ -20,11 +20,11 @@ const Home: NextPage = () => {
         <br />
         <GradientBtn href={'https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di'}>
           <Box textOverflow={'ellipsis'} fontSize={30}>
-            ✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
+            ✨✨✨✨✨✨✨✨✨
             <br />
             {' '}{loc.get('join')}
             <br />
-            ✨✨✨✨✨✨✨✨✨✨✨✨✨{isEn && '✨✨✨'}
+            ✨✨✨✨✨✨✨✨✨
           </Box>
         </GradientBtn>
         <br />
