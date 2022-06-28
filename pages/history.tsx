@@ -30,7 +30,7 @@ const HistoryPage = () => {
     }
 
     return d.slice(pageIndex * pageSize, ((pageIndex + 1) * pageSize))
-  }, [pageIndex, pageSize, hideFeedback, hideText]);
+  }, [pageIndex, pageSize, hideFeedback, hideText]);  // previousId is not needed
 
   return <Layout>
     <Paginator hideFeedback={hideFeedback} hideText={hideText}
