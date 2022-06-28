@@ -42,7 +42,11 @@ const Thumbnail = ({ link, cb }: { link: string, cb: CallbackFunction }) => {
               {/* @ts-ignore */}
               @{videoInfo?.items?.[0]?.snippet?.channelTitle}
             </a>
-            {' '}
+          </Badge>
+
+          <br/>
+
+          <Badge>
             {/* @ts-ignore */}
             ({videoInfo?.items?.[0]?.snippet?.publishedAt.slice(0, 10)})
           </Badge>
