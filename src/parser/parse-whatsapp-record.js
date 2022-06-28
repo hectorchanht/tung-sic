@@ -36,7 +36,7 @@ const parseRawWhatsappRecord = async (
 
       senders.add(sender)
 
-      if (message.length === 0) returheadn;
+      if (message.length === 0) return;
       return {
         datetime: datetime.format(),
         isDj: sender === admin,
@@ -62,4 +62,7 @@ const parseRawWhatsappRecord = async (
   });
 };
 
-parseRawWhatsappRecord();
+parseRawWhatsappRecord(
+  { admin: '東' },
+  { filename: 'raw-whatsapp-record.txt' }
+);
