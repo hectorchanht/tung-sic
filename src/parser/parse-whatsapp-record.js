@@ -59,6 +59,8 @@ const parseRawWhatsappRecord = async (
     fs.writeFile("../../public/meta-data.json", JSON.stringify(metaData), function (err, result) {
       if (err) console.log('error', err);
     });
+
+    fs.unlinkSync(filename);
   });
 };
 
