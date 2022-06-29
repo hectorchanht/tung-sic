@@ -1,0 +1,8 @@
+.title {
+  margin: 0 auto;
+  font-family: "Pacifico", cursive;
+  font-size: 15rem;
+  background: linear-gradient(90deg, rgba(129,132,232,1) 0%, rgba(158,186,230,1) 18%, rgba(194,191,226,1) 46%, rgba(237,197,235,1) 69%, rgba(238,174,202,1) 87%, rgba(238,174,202,1) 87%, rgba(255,134,160,1) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+}

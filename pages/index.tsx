@@ -3,16 +3,16 @@ import type { NextPage } from 'next'
 import FAQ from '../src/components/faq'
 import GradientBtn from '../src/components/gradientBtn'
 import Layout from '../src/components/layout'
-import { useLang, useLocale } from '../src/utils/hooks'
+import { useLocale } from '../src/utils/hooks'
+import styles from '../src/styles/global.module.css';
 
 
 const Home: NextPage = () => {
   const loc = useLocale();
-  const { isEn } = useLang();
   return (
     <Layout>
 
-      <Box fontSize={'3em'} textAlign='center'>
+      <Box fontSize={'3em'} textAlign='center' className={styles.title}>
         {loc.get('welcome')}
       </Box>
 
