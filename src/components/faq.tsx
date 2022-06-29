@@ -2,7 +2,7 @@
 import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box } from '@chakra-ui/react';
 import { useLocale } from '../utils/hooks';
 
-const faqsLength = 7;
+const faqsLength = 8;
 
 const FAQ = () => {
   const loc = useLocale();
