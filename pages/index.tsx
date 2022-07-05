@@ -12,8 +12,11 @@ const Home: NextPage = () => {
   return (
     <Layout>
 
-      <Box fontSize={'3em'} textAlign='center' className={styles.title}>
+      <Box fontSize={'3em'} textAlign='center' className={styles.title2}>
         {loc.get('welcome')}
+        <span className={styles.title3}>
+          tung-sic
+        </span>
       </Box>
 
       <Center>
