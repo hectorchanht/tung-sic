@@ -4,8 +4,9 @@ const moment = require('moment');
 
 const parseRawWhatsappRecord = async (
   { admin = '東' },
-  { filename = 'raw-whatsapp-record.txt' }
+  { filename = '' }
 ) => {
+  if (!filename) throw new Error('filename can not be null')
   const { nanoid } = await import('nanoid');
 
   const dateRegex = /\d{1,2}\/\d{1,2}\/\d{1,2}, \d{1,2}:\d{1,2} - /g;
