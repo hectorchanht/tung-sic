@@ -13,6 +13,11 @@ type CallbackFunction = (id: string) => void;
 
 const Thumbnail = ({ link, cb }: { link: string, cb: CallbackFunction }) => {
   const [videoInfo, setVideoInfo] = React.useState({});
+  /*
+  todo: get all video info beforehand and store it in gunjs
+
+https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B%22part%22%3A%5B%22snippet%2CcontentDetails%22%5D%2C%22maxResults%22%3A25%2C%22pageToken%22%3A%22EAAaBlBUOkNCaw%22%2C%22playlistId%22%3A%22PLAXM729RypVMDM4leAk_rycoNBGIk-SwY%22%7D
+  */
 
   if (!(['youtu.be', 'youtube.com'].some(domain => link.includes(domain)))) return null;
   link = link.replace('https://youtu.be/', 'https://www.youtube.com/watch?v=');
