@@ -1,10 +1,12 @@
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { Flex, IconButton, SimpleGrid, Tooltip } from '@chakra-ui/react';
+import { Badge, Flex, Grid, GridItem, IconButton, Tooltip } from '@chakra-ui/react';
+import dayjs from 'dayjs';
 import React from 'react';
 import data from '../public/parsed-record.json';
 import Layout from "../src/components/layout";
 import Paginator from '../src/components/paginator';
 import Thumbnail from '../src/components/thumbnail';
+import styles from '../src/styles/global.module.css';
 
 
 export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
@@ -55,21 +57,43 @@ const HistoryPage = () => {
       </Tooltip>
     </Flex>
 
-    <SimpleGrid columns={2} spacing={2}>
-      {filteredData.map(({ datetime, isDj, message, id }) => {
+    <Grid
+      // templateRows='repeat(2, 1fr)'
+      templateColumns='repeat(2, 1fr)'
+      gap={3}
+    >
+      {filteredData.map(({ datetime, isDj, message, id }, i) => {
+        let r: any = [
+          i === 0 && <GridItem colSpan={2} key={`datetime-${datetime}`} justifySelf={'center'}>
+            <Badge>
+              {dayjs(datetime).format('DD/MM/YYYY HH:mm:ss')}
+            </Badge>
+          </GridItem>
+        ];
+
         // todo: add show datetime for each day period or story
         // if (message.length === 0) return;  // null data is catch in parsing
         if (message.match(urlRegex)) {
-          return <Thumbnail link={message} key={id} cb={(id = '') => setPreviousId(id)} />
+          r = [
+            ...r,
+            <GridItem>
+              <Thumbnail link={message} key={id} cb={(id = '') => setPreviousId(id)} />
+            </GridItem>
+          ]
         } else {
           if (message.includes('\n')) {
-            return message.split('\n').map((d, di) => <p style={{ alignSelf: 'center' }} key={d + di}>{d}</p>)
+            r = [...r,
+            <GridItem className={styles.textBox}>
+              {message.split('\n').map((d, di) => <p key={d + di}>{d}</p>)}
+            </GridItem>
+            ]
           } else {
-            return <p style={{ alignSelf: 'center' }} key={id}>{message}</p>
+            r = [...r, <GridItem className={styles.textBox} key={id}>{message}</GridItem>]
           }
         }
+        return r;
       })}
-    </SimpleGrid>
+    </Grid>
   </Layout>
 }
 

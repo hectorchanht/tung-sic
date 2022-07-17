@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.2.1",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "dayjs": "^1.11.3",
     "framer-motion": "^6",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",
