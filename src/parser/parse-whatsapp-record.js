@@ -16,7 +16,8 @@ const parseRawWhatsappRecord = async (
     "joined using this group's invite link\n",
     "You added",
     'left\n',
-    '<Media omitted>'
+    '<Media omitted>',
+    'This message was deleted'
   ];
   fs.readFile(`./${filename}`, 'utf8', function (err, data) {
     if (err) throw err;
