@@ -35,7 +35,7 @@ const Paginator = ({ cb, hideFeedback, hideText }:
     if (pageIndex > maxPage) {
       setPageIndex(maxPage - 1)
     }
-  }, [maxPage])
+  }, [maxPage, pageIndex])
 
   // const debouncedSetPageIndex = debounce(setPageIndex, 300, { leading: true, maxWait: 420, trailing: true });
 
