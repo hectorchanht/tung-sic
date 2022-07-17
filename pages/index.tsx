@@ -3,8 +3,8 @@ import type { NextPage } from 'next'
 import FAQ from '../src/components/faq'
 import GradientBtn from '../src/components/gradientBtn'
 import Layout from '../src/components/layout'
+import styles from '../src/styles/global.module.css'
 import { useLocale } from '../src/utils/hooks'
-import styles from '../src/styles/global.module.css';
 
 
 const Home: NextPage = () => {
@@ -40,7 +40,7 @@ const Home: NextPage = () => {
       </Center>
 
       <Box fontWeight={800} textAlign='center'>
-        {loc.get('intro1')}
+        {loc.get('intro1').split(',').map((d, i) => <p key={i}>{d}</p>)}
       </Box>
 
       <br />
