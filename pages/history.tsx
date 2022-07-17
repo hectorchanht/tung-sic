@@ -75,7 +75,9 @@ const HistoryPage = () => {
         if (
           message.match(urlRegex)
           && message.indexOf('youtube.com/playlist') === -1
+          && message.indexOf('youtube.com/clip') === -1
           && ['youtu.be', 'youtube.com'].some(d => message.indexOf(d) !== -1)
+          && message
         ) {
           r = [
             ...r,
