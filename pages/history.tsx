@@ -79,14 +79,14 @@ const HistoryPage = () => {
         ) {
           r = [
             ...r,
-            <GridItem>
-              <Thumbnail link={message} key={id} cb={(id = '') => setPreviousId(id)} />
+            <GridItem key={id}>
+              <Thumbnail link={message} cb={(id = '') => setPreviousId(id)} />
             </GridItem>
           ]
         } else {
           if (message.includes('\n')) {
             r = [...r,
-            <GridItem className={styles.textBox}>
+            <GridItem className={styles.textBox} key={id}>
               {message.split('\n').map((d, di) => <p key={d + di}>{d}</p>)}
             </GridItem>
             ]
