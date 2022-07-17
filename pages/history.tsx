@@ -70,10 +70,13 @@ const HistoryPage = () => {
             </Badge>
           </GridItem>
         ];
-
         // todo: add show datetime for each day period or story
         // if (message.length === 0) return;  // null data is catch in parsing
-        if (message.match(urlRegex)) {
+        if (
+          message.match(urlRegex)
+          && message.indexOf('youtube.com/playlist') === -1
+          && ['youtu.be', 'youtube.com'].some(d => message.indexOf(d) !== -1)
+        ) {
           r = [
             ...r,
             <GridItem>
