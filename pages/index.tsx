@@ -40,7 +40,7 @@ const Home: NextPage = () => {
       </Center>
 
       <Box fontWeight={800} textAlign='center'>
-        {loc.get('intro1').split(',').map((d, i) => <p key={i}>{d}</p>)}
+        {loc.get('intro1').split(',').map((d: string, i: number) => <p key={i}>{d}</p>)}
       </Box>
 
       <br />
