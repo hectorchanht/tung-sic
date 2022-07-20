@@ -75,8 +75,7 @@ const HistoryPage = () => {
           (i === 0) && <DatetimeBadge datetime={datetime} />
         ];
         if (i >= 1) {
-          let diff = dayjs(datetime).diff(dayjs(filteredData[i - 1]?.datetime))
-          if (diff >= 1.8e+6) { // 1.8e+6 === 30mins
+          if (dayjs(datetime).diff(dayjs(filteredData?.[i - 1]?.datetime), 'minute', true) >= 60) {
             r = [...r, <DatetimeBadge datetime={datetime} />]
           }
         }
