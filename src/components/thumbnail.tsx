@@ -20,7 +20,8 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
   */
 
   if (!(['youtu.be', 'youtube.com'].some(domain => link.includes(domain)))) return null;
-  link = link.replace('https://youtu.be/', 'https://www.youtube.com/watch?v=');
+  link = link.substring(link.indexOf('https://')).replace('https://youtu.be/', 'https://www.youtube.com/watch?v=');
+  // remove text in front of "https://"
 
   // @ts-ignore
   const id = link.split('v=').pop().slice(0, 11);
