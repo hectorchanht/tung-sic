@@ -34,6 +34,14 @@ const HistoryPage = () => {
     return d.slice(pageIndex * pageSize, ((pageIndex + 1) * pageSize))
   }, [pageIndex, pageSize, hideFeedback, hideText]);  // previousId is not needed
 
+  const DatetimeBadge = ({ datetime }: { datetime: string }) => (
+    <GridItem colSpan={2} key={`datetime-${datetime}`} justifySelf={'center'}>
+      <Badge>
+        {dayjs(datetime).format('DD/MM/YYYY HH:mm:ss')}
+      </Badge>
+    </GridItem>
+  );
+
   return <Layout>
     <Paginator hideFeedback={hideFeedback} hideText={hideText}
       cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)} />
@@ -64,13 +72,16 @@ const HistoryPage = () => {
     >
       {filteredData.map(({ datetime, isDj, message, id }, i) => {
         let r: any = [
-          i === 0 && <GridItem colSpan={2} key={`datetime-${datetime}`} justifySelf={'center'}>
-            <Badge>
-              {dayjs(datetime).format('DD/MM/YYYY HH:mm:ss')}
-            </Badge>
-          </GridItem>
+          (i === 0) && <DatetimeBadge datetime={datetime} />
         ];
+        if (i >= 1) {
+          let diff = dayjs(datetime).diff(dayjs(filteredData[i - 1]?.datetime))
+          if (diff >= 1.8e+6) { // 1.8e+6 === 30mins
+            r = [...r, <DatetimeBadge datetime={datetime} />]
+          }
+        }
         // todo: add show datetime for each day period or story
+
         // if (message.length === 0) return;  // null data is catch in parsing
         if (message.match(urlRegex) && message) {
           if (message.indexOf('youtube.com/playlist') === -1
