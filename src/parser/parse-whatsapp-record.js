@@ -17,7 +17,8 @@ const parseRawWhatsappRecord = async (
     "You added",
     'left\n',
     '<Media omitted>',
-    'This message was deleted'
+    'This message was deleted',
+    'You deleted this message'
   ];
   fs.readFile(`./${filename}`, 'utf8', function (err, data) {
     if (err) throw err;
