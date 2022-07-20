@@ -72,19 +72,22 @@ const HistoryPage = () => {
         ];
         // todo: add show datetime for each day period or story
         // if (message.length === 0) return;  // null data is catch in parsing
-        if (
-          message.match(urlRegex)
-          && message.indexOf('youtube.com/playlist') === -1
-          && message.indexOf('youtube.com/clip') === -1
-          && ['youtu.be', 'youtube.com'].some(d => message.indexOf(d) !== -1)
-          && message
-        ) {
-          r = [
-            ...r,
-            <GridItem key={id}>
-              <Thumbnail link={message} cb={(id = '') => setPreviousId(id)} />
-            </GridItem>
-          ]
+        if (message.match(urlRegex) && message) {
+          if (message.indexOf('youtube.com/playlist') === -1
+            && message.indexOf('youtube.com/clip') === -1
+            && ['youtu.be', 'youtube.com'].some(d => message.indexOf(d) !== -1)) {
+            r = [
+              ...r,
+              <GridItem key={id}>
+                <Thumbnail link={message} cb={(id = '') => setPreviousId(id)} />
+              </GridItem>
+            ]
+          }
+          else {
+            r = [...r, <GridItem key={id} className={styles.textBox}>
+              <a href={message.split(/\r?\n/)?.[0] || ''}>{message}</a>
+            </GridItem>]
+          }
         } else {
           if (message.includes('\n')) {
             r = [...r,
