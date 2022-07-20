@@ -35,7 +35,7 @@ const HistoryPage = () => {
   }, [pageIndex, pageSize, hideFeedback, hideText]);  // previousId is not needed
 
   const DatetimeBadge = ({ datetime }: { datetime: string }) => (
-    <GridItem colSpan={2} key={`datetime-${datetime}`} justifySelf={'center'}>
+    <GridItem colSpan={2} justifySelf={'center'}>
       <Badge>
         {dayjs(datetime).format('DD/MM/YYYY HH:mm:ss')}
       </Badge>
@@ -72,11 +72,11 @@ const HistoryPage = () => {
     >
       {filteredData.map(({ datetime, isDj, message, id }, i) => {
         let r: any = [
-          (i === 0) && <DatetimeBadge datetime={datetime} />
+          (i === 0) && <DatetimeBadge key={`datetime-${datetime}`} datetime={datetime} />
         ];
         if (i >= 1) {
           if (dayjs(datetime).diff(dayjs(filteredData?.[i - 1]?.datetime), 'minute', true) >= 60) {
-            r = [...r, <DatetimeBadge datetime={datetime} />]
+            r = [...r, <DatetimeBadge key={`datetime-${datetime}`} datetime={datetime} />]
           }
         }
         // todo: add show datetime for each day period or story
