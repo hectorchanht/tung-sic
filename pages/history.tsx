@@ -37,7 +37,7 @@ const HistoryPage = () => {
   const DatetimeBadge = ({ datetime }: { datetime: string }) => (
     <GridItem colSpan={2} justifySelf={'center'}>
       <Badge>
-        {dayjs(datetime).format('DD/MM/YYYY HH:mm:ss')}
+        {dayjs(datetime).format('DD/MM/YYYY HH:mm')}
       </Badge>
     </GridItem>
   );
