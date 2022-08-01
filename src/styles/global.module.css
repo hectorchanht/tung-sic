@@ -32,7 +32,7 @@
 }
 
 .textBox {
-  border-left: 5px solid red;
+  border-left: 5px solid #AB47BC;
   padding-left: 12px;
   max-width: min(40vw, 420px);
 }
