@@ -1,4 +1,4 @@
-## Introduction
+## 🎸tung-sic | tung music sharing
 a prototype project for me to share some whatsapp record to the internet and view it as a song playlist
 
 
