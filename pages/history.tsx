@@ -25,11 +25,11 @@ const HistoryPage = () => {
       d = d.filter(({ isDj }) => isDj);
     }
 
-    if (previousId) {
-      const previousIdIndex = d.findIndex(({ message }) => message.includes(previousId))
-      setPreviousId('')
-      return d.slice(previousIdIndex, previousIdIndex + pageSize)
-    }
+    // if (previousId) {
+    //   const previousIdIndex = d.findIndex(({ message }) => message.includes(previousId))
+    //   setPreviousId('')
+    //   return d.slice(previousIdIndex, previousIdIndex + pageSize)
+    // }
 
     return d.slice(pageIndex * pageSize, ((pageIndex + 1) * pageSize))
   }, [pageIndex, pageSize, hideFeedback, hideText]);  // previousId is not needed
