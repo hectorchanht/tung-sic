@@ -16,6 +16,22 @@ const Paginator = ({ cb, hideFeedback, hideText }:
   const [pageIndex, setPageIndex] = React.useState(0);
   const [pageSize, setPageSize] = React.useState(pageSizeOptions[1]);
 
+  React.useEffect(() => {
+    function handleKeyDown(e: any) {
+      if (e.key === 'ArrowLeft' && pageIndex >= 0) {
+        setPageIndex(d => d - 1)
+      } else if (e.key === 'ArrowRight' && pageIndex <= maxPage) {
+        setPageIndex(d => d + 1)
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown, { passive: false });
+
+    // Don't forget to clean up
+    return function cleanup() {
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, []);
+
   const maxPage = React.useMemo(() => {
     if (hideText) {
       const itemCount = data.filter(({ message }) => message.match(urlRegex)).length;
