@@ -1,7 +1,6 @@
 // https://gist.github.com/protrolium/8831763
-import { Badge, Box } from '@chakra-ui/react';
+import { Badge, Box, Image } from '@chakra-ui/react';
 import { isEmpty } from 'lodash';
-import Image from 'next/image';
 import React from 'react';
 
 const getYtInfo = (id = '') => fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${process.env.NEXT_PUBLIC_YOUTUBE_ID}&part=snippet`)
@@ -50,7 +49,7 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
             </a>
           </Badge>
 
-          <br/>
+          <br />
 
           <Badge>
             {/* @ts-ignore */}
