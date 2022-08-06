@@ -1,5 +1,5 @@
 // https://gist.github.com/protrolium/8831763
-import { Badge, Box, Image } from '@chakra-ui/react';
+import { Badge, Box, Img } from '@chakra-ui/react';
 import { isEmpty } from 'lodash';
 import React from 'react';
 
@@ -32,7 +32,7 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
   return (
     <Box>
       <a onMouseOver={getInfo} onTouchStart={getInfo} href={link} target="_blank" rel="noreferrer">
-        <Image height={352} width={470} src={`https://img.youtube.com/vi/${id}/0.jpg`} alt={'youtube thumbnail'} />
+        <Img objectFit={'cover'} height={352} width={470} src={`https://img.youtube.com/vi/${id}/0.jpg`} alt={'youtube thumbnail'} />
       </a>
       {!isEmpty(videoInfo) && (
         <Box>
