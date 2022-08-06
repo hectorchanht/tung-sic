@@ -12,7 +12,7 @@ import styles from '../src/styles/global.module.css';
 export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
 const HistoryPage = () => {
-  const [{ hideFeedback, hideText }, setHide] = React.useState({ hideFeedback: true, hideText: false });
+  const [{ hideFeedback, hideText, hideDate }, setHide] = React.useState({ hideFeedback: true, hideText: false, hideDate: true });
   const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 6 });
   const [previousId, setPreviousId] = React.useState('');
 
@@ -63,6 +63,14 @@ const HistoryPage = () => {
           ml={4}
         />
       </Tooltip>
+      <Tooltip label="hide date, only one date per page">
+        <IconButton
+          aria-label={'hide-date'}
+          onClick={() => setHide(d => ({ ...d, hideDate: !d.hideDate }))}
+          icon={hideDate ? <ViewIcon /> : <ViewOffIcon />}
+          ml={4}
+        />
+      </Tooltip>
     </Flex>
 
     <Grid
@@ -74,7 +82,7 @@ const HistoryPage = () => {
         let r: any = [
           (i === 0) && <DatetimeBadge key={`datetime-${datetime}`} datetime={datetime} />
         ];
-        if (i >= 1) {
+        if (i >= 1 && !hideDate) {
           if (dayjs(datetime).diff(dayjs(filteredData?.[i - 1]?.datetime), 'minute', true) >= 60) {
             r = [...r, <DatetimeBadge key={`datetime-${datetime}`} datetime={datetime} />]
           }
