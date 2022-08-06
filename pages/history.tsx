@@ -12,7 +12,7 @@ import styles from '../src/styles/global.module.css';
 export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
 const HistoryPage = () => {
-  const [{ hideFeedback, hideText, hideDate }, setHide] = React.useState({ hideFeedback: true, hideText: false, hideDate: true });
+  const [{ hideFeedback, hideText, hideDate }, setHide] = React.useState({ hideFeedback: true, hideText: true, hideDate: true });
   const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 6 });
   const [previousId, setPreviousId] = React.useState('');
 
@@ -20,8 +20,7 @@ const HistoryPage = () => {
     let d = [...data];
     if (hideText) {
       d = d.filter(({ message }) => message.match(urlRegex));
-    }
-    else if (hideFeedback) {
+    } else if (hideFeedback) {
       d = d.filter(({ isDj }) => isDj);
     }
 
