@@ -43,13 +43,13 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
             {videoInfo?.items?.[0]?.snippet?.title}
           </Box>
 
-          <Box>
+          <Badge>
             {/* @ts-ignore */}
             <a href={`https://www.youtube.com/channel/${videoInfo?.items?.[0]?.snippet?.channelId}`}>
               {/* @ts-ignore */}
-              @{videoInfo?.items?.[0]?.snippet?.channelTitle}
+              @{videoInfo?.items?.[0]?.snippet?.channelTitle?.slice(0,18)}
             </a>
-          </Box>
+          </Badge>
 
           <br />
 
