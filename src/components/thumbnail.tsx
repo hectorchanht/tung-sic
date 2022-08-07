@@ -29,7 +29,7 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
     isEmpty(videoInfo) && getYtInfo(id).then(setVideoInfo)
   };
 
-  let channel = videoInfo?.items?.[0]?.snippet?.channelTitle
+  let channel = videoInfo?.items && videoInfo?.items?.[0]?.snippet?.channelTitle || ""
   channel = channel.length >= 18 ? channel.slice(0, 18) + "..." : channel
   return (
     <Box>
