@@ -75,7 +75,7 @@ const HistoryPage = () => {
     <Grid
       // templateRows='repeat(2, 1fr)'
       templateColumns='repeat(2, 1fr)'
-      gap={0}
+      gap={"2px"}
     >
       {filteredData.map(({ datetime, isDj, message, id }, i) => {
         let r: any = [
