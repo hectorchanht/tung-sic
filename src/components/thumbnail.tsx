@@ -29,6 +29,8 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
     isEmpty(videoInfo) && getYtInfo(id).then(setVideoInfo)
   };
 
+  let channel = videoInfo?.items?.[0]?.snippet?.channelTitle
+  channel = channel.length >= 18 ? channel.slice(0, 18) + "..." : channel
   return (
     <Box>
       <a onMouseOver={getInfo} onTouchStart={getInfo} href={link} target="_blank" rel="noreferrer">
@@ -47,7 +49,7 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
             {/* @ts-ignore */}
             <a href={`https://www.youtube.com/channel/${videoInfo?.items?.[0]?.snippet?.channelId}`}>
               {/* @ts-ignore */}
-              @{videoInfo?.items?.[0]?.snippet?.channelTitle?.slice(0,18)}
+              @{channel}
             </a>
           </Badge>
 
