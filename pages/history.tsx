@@ -11,6 +11,8 @@ import styles from '../src/styles/global.module.css';
 
 
 export const queryRegex = /[?&]([^=#]+)=([^&#]*)/g;
+const extractUrlRegex = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/
+
 export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 export const defaultQuery = {
   page: 0,
@@ -147,7 +149,7 @@ const HistoryPage = () => {
           }
           else {
             r = [...r, <GridItem key={id} className={styles.textBox}>
-              <a href={message.split(/\r?\n/)?.[0] || ''}>{message}</a>
+              <a href={message.match(extractUrlRegex)?.[0] || ''}>{message}</a>
             </GridItem>]
           }
         } else {
