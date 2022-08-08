@@ -76,8 +76,7 @@ const HistoryPage = () => {
 
   return <Layout>
     <Paginator hideFeedback={hideFeedback} hideText={hideText}
-      cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)}
-      page={pageIndex} size={pageSize} />
+      cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)} />
 
     <Flex justifyContent={'center'} m={4}>
       <Tooltip label="hide comment, only showing posts from DJ">
