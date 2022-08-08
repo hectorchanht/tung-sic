@@ -1,11 +1,11 @@
-import { LinkIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { AtSignIcon, CalendarIcon, InfoOutlineIcon, LinkIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Badge, Flex, Grid, GridItem, IconButton, Tooltip, useClipboard } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React from 'react';
 import data from '../public/parsed-record.json';
 import Layout from "../src/components/layout";
-import Paginator, { pageSizeOptions }  from '../src/components/paginator';
+import Paginator, { pageSizeOptions } from '../src/components/paginator';
 import Thumbnail from '../src/components/thumbnail';
 import styles from '../src/styles/global.module.css';
 
@@ -84,14 +84,14 @@ const HistoryPage = () => {
           aria-label={'hide-comment'}
           disabled={hideText}
           onClick={() => setHide(d => ({ ...d, hideFeedback: !d.hideFeedback }))}
-          icon={hideFeedback ? <ViewIcon /> : <ViewOffIcon />}
+          icon={hideFeedback ? <InfoOutlineIcon /> : <ViewOffIcon />}
         />
       </Tooltip>
       <Tooltip label="hide text, only showing songs">
         <IconButton
           aria-label={'hide-text'}
           onClick={() => setHide(d => ({ ...d, hideText: !d.hideText }))}
-          icon={hideText ? <ViewIcon /> : <ViewOffIcon />}
+          icon={hideText ? <AtSignIcon /> : <ViewOffIcon />}
           ml={4}
         />
       </Tooltip>
@@ -99,7 +99,7 @@ const HistoryPage = () => {
         <IconButton
           aria-label={'hide-date'}
           onClick={() => setHide(d => ({ ...d, hideDate: !d.hideDate }))}
-          icon={hideDate ? <ViewIcon /> : <ViewOffIcon />}
+          icon={hideDate ? <CalendarIcon /> : <ViewOffIcon />}
           ml={4}
         />
       </Tooltip>
