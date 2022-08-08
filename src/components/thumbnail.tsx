@@ -1,5 +1,5 @@
 // https://gist.github.com/protrolium/8831763
-import { Badge, Box, Code, Img } from '@chakra-ui/react';
+import { Box, Code, Img, Text } from '@chakra-ui/react';
 import { isEmpty } from 'lodash';
 import React from 'react';
 
@@ -47,16 +47,13 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
             {/* @ts-ignore */}
             <a href={`https://www.youtube.com/channel/${videoInfo?.items?.[0]?.snippet?.channelId}`}>
               {/* @ts-ignore */}
-              @{videoInfo?.items?.[0]?.snippet?.channelTitle}
+              {videoInfo?.items?.[0]?.snippet?.channelTitle}
+              <Text as='sup'>
+                {/* @ts-ignore */}
+                {' '}({videoInfo?.items?.[0]?.snippet?.publishedAt.slice(0, 10)})
+              </Text>
             </a>
           </Code>
-
-          <br />
-
-          <Badge>
-            {/* @ts-ignore */}
-            ({videoInfo?.items?.[0]?.snippet?.publishedAt.slice(0, 10)})
-          </Badge>
         </Box>)}
     </Box>
   )
