@@ -33,7 +33,7 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
     <Box>
       <a onMouseOver={getInfo} onTouchStart={getInfo} href={link} target="_blank" rel="noreferrer">
         <Img
-          src={`https://img.youtube.com/vi/${id}/sddefault.jpg`}
+          src={`https://img.youtube.com/vi/${id}/0.jpg`}
           alt={'youtube thumbnail'} />
       </a>
       {!isEmpty(videoInfo) && (
