@@ -1,18 +1,48 @@
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { Badge, Flex, Grid, GridItem, IconButton, Tooltip } from '@chakra-ui/react';
+import { LinkIcon, ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { Badge, Flex, Grid, GridItem, IconButton, Tooltip, useClipboard } from '@chakra-ui/react';
 import dayjs from 'dayjs';
+import { useRouter } from 'next/router';
 import React from 'react';
 import data from '../public/parsed-record.json';
 import Layout from "../src/components/layout";
-import Paginator from '../src/components/paginator';
+import Paginator, { pageSizeOptions }  from '../src/components/paginator';
 import Thumbnail from '../src/components/thumbnail';
 import styles from '../src/styles/global.module.css';
 
 
+export const queryRegex = /[?&]([^=#]+)=([^&#]*)/g;
 export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+export const defaultQuery = {
+  page: 0,
+  size: pageSizeOptions[1],
+  hideFb: 1,
+  hideDj: 1,
+  hideDt: 1
+};
 
 const HistoryPage = () => {
-  const [{ hideFeedback, hideText, hideDate }, setHide] = React.useState({ hideFeedback: true, hideText: true, hideDate: true });
+  const router = useRouter();
+
+  const query = React.useMemo(() => {
+    if (!(router.asPath && router.asPath.match(queryRegex))) {
+      return (defaultQuery);
+    }
+
+    // @ts-ignore
+    return router.asPath.match(queryRegex).reduce((a, b) => {
+      const [k, v] = b.slice(1).split('=')
+      return ({ ...a, [k]: v })
+    }, defaultQuery) || (defaultQuery);
+  }, [router.asPath]);
+
+  const { hideFb, hideDj, hideDt } = query;
+
+
+  const [{ hideFeedback, hideText, hideDate }, setHide] = React.useState(
+    // @ts-ignore
+    { hideFeedback: '0' !== hideFb, hideText: '0' !== hideDj, hideDate: '0' !== hideDt }
+  );
+
   const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 6 });
   const [previousId, setPreviousId] = React.useState('');
 
@@ -41,9 +71,13 @@ const HistoryPage = () => {
     </GridItem>
   );
 
+  const clipText = typeof window !== "undefined" && `${window.location.href.split('/history')[0]}/history?page=${pageIndex + 1}&size=${pageSize}&hideFb=${hideFeedback ? 1 : 0}&hideDj=${hideText ? 1 : 0}&hideDt=${hideDate ? 1 : 0}` || ''
+  const { onCopy } = useClipboard(clipText);
+
   return <Layout>
     <Paginator hideFeedback={hideFeedback} hideText={hideText}
-      cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)} />
+      cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)}
+      page={pageIndex} size={pageSize} />
 
     <Flex justifyContent={'center'} m={4}>
       <Tooltip label="hide comment, only showing posts from DJ">
@@ -67,6 +101,18 @@ const HistoryPage = () => {
           aria-label={'hide-date'}
           onClick={() => setHide(d => ({ ...d, hideDate: !d.hideDate }))}
           icon={hideDate ? <ViewIcon /> : <ViewOffIcon />}
+          ml={4}
+        />
+      </Tooltip>
+      <Tooltip label="share this page">
+        <IconButton
+          aria-label={'share this page'}
+          onClick={() => {
+            if (confirm(clipText)) {
+              onCopy()
+            }
+          }}
+          icon={<LinkIcon />}
           ml={4}
         />
       </Tooltip>

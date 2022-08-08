@@ -1,20 +1,37 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Center, IconButton, Input, InputGroup, InputRightAddon, Select, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Tooltip, Wrap, WrapItem } from '@chakra-ui/react';
 // import { debounce } from 'lodash';
+import { useRouter } from 'next/router';
 import React from 'react';
-import { urlRegex } from "../../pages/history";
+import { defaultQuery, queryRegex, urlRegex } from "../../pages/history";
 import data from '../../public/parsed-record.json';
 
 
 type CallbackFunction = ({ pageIndex, pageSize }: { pageIndex: number, pageSize: number }) => void;
 
-const pageSizeOptions = [6, 12, 24, 48, 96];
+export const pageSizeOptions = [6, 12, 24, 48, 96];
 
-
-const Paginator = ({ cb, hideFeedback, hideText }:
+const Paginator = ({ cb, hideFeedback, hideText, }:
   { cb: CallbackFunction, hideFeedback: Boolean, hideText: Boolean }) => {
-  const [pageIndex, setPageIndex] = React.useState(0);
-  const [pageSize, setPageSize] = React.useState(pageSizeOptions[1]);
+  const router = useRouter();
+
+  const query = React.useMemo(() => {
+    if (!(router.asPath && router.asPath.match(queryRegex))) {
+      return (defaultQuery);
+    }
+
+    // @ts-ignore
+    return router.asPath.match(queryRegex).reduce((a, b) => {
+      const [k, v] = b.slice(1).split('=')
+      return ({ ...a, [k]: v })
+    }, defaultQuery) || (defaultQuery);
+  }, [router.asPath]);
+
+  let p = query.page;
+  if (p > 1) { p -= 1 };
+
+  const [pageIndex, setPageIndex] = React.useState(p || 0);
+  const [pageSize, setPageSize] = React.useState(query.size);
 
   React.useEffect(() => {
     function handleKeyDown(e: any) {
