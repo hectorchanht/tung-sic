@@ -1,6 +1,6 @@
 import formidable from "formidable";
 import fs from "fs";
-import parseRawWhatsappRecord from "../../src/parser/parse-whatsapp-record";
+import parseRawWhatsappRecord from "../../src/utils/parse-whatsapp-record";
 
 export const config = {
   api: {
