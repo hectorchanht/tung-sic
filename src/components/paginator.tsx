@@ -9,7 +9,7 @@ import data from '../../public/parsed-record.json';
 
 type CallbackFunction = ({ pageIndex, pageSize }: { pageIndex: number, pageSize: number }) => void;
 
-export const pageSizeOptions = [6, 12, 24, 48, 96];
+export const pageSizeOptions = [2, 4, 6, 8, 10, 16, 32, 64, 128, 256, 512, 1024];
 
 const Paginator = ({ cb, hideFeedback, hideText, }:
   { cb: CallbackFunction, hideFeedback: Boolean, hideText: Boolean }) => {

@@ -16,7 +16,7 @@ const extractUrlRegex = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@
 export const urlRegex = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 export const defaultQuery = {
   page: 0,
-  size: pageSizeOptions[1],
+  size: pageSizeOptions[2],
   hideFb: 1,
   hideDj: 1,
   hideDt: 1
