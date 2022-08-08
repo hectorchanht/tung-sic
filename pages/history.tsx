@@ -1,5 +1,5 @@
 import { AtSignIcon, CalendarIcon, InfoOutlineIcon, LinkIcon, ViewOffIcon } from "@chakra-ui/icons";
-import { Badge, Flex, Grid, GridItem, IconButton, Tooltip, useClipboard } from '@chakra-ui/react';
+import { Badge, Center, Grid, GridItem, IconButton, Tooltip, useClipboard, Wrap } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import React from 'react';
@@ -80,44 +80,46 @@ const HistoryPage = () => {
     <Paginator hideFeedback={hideFeedback} hideText={hideText}
       cb={(d: { pageIndex: number, pageSize: number }) => setPage(d)} />
 
-    <Flex justifyContent={'center'} m={4}>
-      <Tooltip label="hide comment, only showing posts from DJ">
-        <IconButton
-          aria-label={'hide-comment'}
-          disabled={hideText}
-          onClick={() => setHide(d => ({ ...d, hideFeedback: !d.hideFeedback }))}
-          icon={hideFeedback ? <InfoOutlineIcon /> : <ViewOffIcon />}
-        />
-      </Tooltip>
-      <Tooltip label="hide text, only showing songs">
-        <IconButton
-          aria-label={'hide-text'}
-          onClick={() => setHide(d => ({ ...d, hideText: !d.hideText }))}
-          icon={hideText ? <AtSignIcon /> : <ViewOffIcon />}
-          ml={4}
-        />
-      </Tooltip>
-      <Tooltip label="hide date, only one date per page">
-        <IconButton
-          aria-label={'hide-date'}
-          onClick={() => setHide(d => ({ ...d, hideDate: !d.hideDate }))}
-          icon={hideDate ? <CalendarIcon /> : <ViewOffIcon />}
-          ml={4}
-        />
-      </Tooltip>
-      <Tooltip label="share this page">
-        <IconButton
-          aria-label={'share this page'}
-          onClick={() => {
-            if (confirm(clipText)) {
-              onCopy()
-            }
-          }}
-          icon={<LinkIcon />}
-          ml={4}
-        />
-      </Tooltip>
-    </Flex>
+    <Center>
+      <Wrap justifyContent={'center'} m={4}>
+        <Tooltip label="hide comment, only showing posts from DJ">
+          <IconButton
+            aria-label={'hide-comment'}
+            disabled={hideText}
+            onClick={() => setHide(d => ({ ...d, hideFeedback: !d.hideFeedback }))}
+            icon={hideFeedback ? <InfoOutlineIcon /> : <ViewOffIcon />}
+          />
+        </Tooltip>
+        <Tooltip label="hide text, only showing songs">
+          <IconButton
+            aria-label={'hide-text'}
+            onClick={() => setHide(d => ({ ...d, hideText: !d.hideText }))}
+            icon={hideText ? <AtSignIcon /> : <ViewOffIcon />}
+            ml={4}
+          />
+        </Tooltip>
+        <Tooltip label="hide date, only one date per page">
+          <IconButton
+            aria-label={'hide-date'}
+            onClick={() => setHide(d => ({ ...d, hideDate: !d.hideDate }))}
+            icon={hideDate ? <CalendarIcon /> : <ViewOffIcon />}
+            ml={4}
+          />
+        </Tooltip>
+        <Tooltip label="share this page">
+          <IconButton
+            aria-label={'share this page'}
+            onClick={() => {
+              if (confirm(clipText)) {
+                onCopy()
+              }
+            }}
+            icon={<LinkIcon />}
+            ml={4}
+          />
+        </Tooltip>
+      </Wrap>
+    </Center>
 
     <Grid
       // templateRows='repeat(2, 1fr)'
