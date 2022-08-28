@@ -10,7 +10,7 @@ const getYtInfo = (id = '') => fetch(`https://www.googleapis.com/youtube/v3/vide
 // })
 type CallbackFunction = (id: string) => void;
 
-const Thumbnail = ({ link, cb }: { link: string, cb: CallbackFunction }) => {
+const Thumbnail = ({ link, cb }: { link: string, cb: CallbackFunction | null }) => {
   const [videoInfo, setVideoInfo] = React.useState({});
   /*
   todo: get all video info beforehand and store it in gunjs
@@ -25,7 +25,7 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
   // @ts-ignore
   const id = link.split('v=').pop().slice(0, 11);
   const getInfo = () => {
-    cb(id);
+    cb && cb(id);
     isEmpty(videoInfo) && getYtInfo(id).then(setVideoInfo)
   };
 
