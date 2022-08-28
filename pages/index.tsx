@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import FAQ from '../src/components/faq'
 import GradientBtn from '../src/components/gradientBtn'
 import Layout from '../src/components/layout'
-import styles from '../src/styles/global.module.css'
+import RandomThumbnail from '../src/components/randomThumbnail'
 import { useLocale } from '../src/utils/hooks'
 
 
@@ -12,13 +12,13 @@ const Home: NextPage = () => {
   return (
     <Layout>
 
-      <Box fontSize={'3em'} textAlign='center' className={styles.title2}>
+      {/* <Box fontSize={'3em'} textAlign='center' className={styles.title2}>
         {loc.get('welcome')}
         <span className={styles.title3}>
           tung-sic
         </span>
-      </Box>
-
+      </Box> */}
+      <RandomThumbnail />
       <Center>
         <br />
         <GradientBtn href={'https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di'}>
