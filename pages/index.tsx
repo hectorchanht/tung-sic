@@ -4,27 +4,29 @@ import FAQ from '../src/components/faq'
 import GradientBtn from '../src/components/gradientBtn'
 import Layout from '../src/components/layout'
 import RandomThumbnail from '../src/components/randomThumbnail'
+import styles from '../src/styles/global.module.css'
 import { useLocale } from '../src/utils/hooks'
-
 
 const Home: NextPage = () => {
   const loc = useLocale();
   return (
     <Layout>
 
-      {/* <Box fontSize={'3em'} textAlign='center' className={styles.title2}>
+      <Box fontSize={'3em'} textAlign='center' className={styles.title2}>
         {loc.get('welcome')}
         <span className={styles.title3}>
           tung-sic
         </span>
-      </Box> */}
+      </Box>
       <Center>
         <br />
         <GradientBtn href={'https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di'}>
           <Box textOverflow={'ellipsis'} fontSize={30}>
             ✨✨✨✨✨✨
             <br />
-            ✨whatsapp✨
+            ✨Whatsapp✨
+            <br />
+            ✨  Group  ✨
             <br />
             ✨✨✨✨✨✨
           </Box>
