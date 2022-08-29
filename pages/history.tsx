@@ -1,4 +1,4 @@
-import { AtSignIcon, CalendarIcon, InfoOutlineIcon, LinkIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { AtSignIcon, CalendarIcon, ChevronDownIcon, InfoOutlineIcon, LinkIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Badge, Center, Grid, GridItem, IconButton, Tooltip, useClipboard, Wrap } from '@chakra-ui/react';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
@@ -37,12 +37,12 @@ const HistoryPage = () => {
     }, defaultQuery) || (defaultQuery);
   }, [router.asPath]);
 
-  const { hideFb, hideDj, hideDt } = query;
+  const { hideFb, hideDj, hideDt, hideIf } = query;
 
 
-  const [{ hideFeedback, hideText, hideDate }, setHide] = React.useState(
+  const [{ hideFeedback, hideText, hideDate, hideInfo }, setHide] = React.useState(
     // @ts-ignore
-    { hideFeedback: '0' !== hideFb, hideText: '0' !== hideDj, hideDate: '0' !== hideDt }
+    { hideFeedback: '0' !== hideFb, hideText: '0' !== hideDj, hideDate: '0' !== hideDt, hideInfo: '0' !== hideIf }
   );
 
   const [{ pageIndex, pageSize }, setPage] = React.useState({ pageIndex: 0, pageSize: 6 });
@@ -82,7 +82,7 @@ const HistoryPage = () => {
 
     <Center>
       <Wrap justifyContent={'center'} m={4}>
-        <Tooltip label="hide comment, only showing posts from DJ">
+        <Tooltip label="show posts from audience">
           <IconButton
             aria-label={'hide-comment'}
             disabled={hideText}
@@ -90,7 +90,7 @@ const HistoryPage = () => {
             icon={hideFeedback ? <InfoOutlineIcon /> : <ViewOffIcon />}
           />
         </Tooltip>
-        <Tooltip label="hide text, only showing songs">
+        <Tooltip label="show text posts">
           <IconButton
             aria-label={'hide-text'}
             onClick={() => setHide(d => ({ ...d, hideText: !d.hideText }))}
@@ -98,7 +98,7 @@ const HistoryPage = () => {
             ml={4}
           />
         </Tooltip>
-        <Tooltip label="hide date, only one date per page">
+        <Tooltip label="only one date per page">
           <IconButton
             aria-label={'hide-date'}
             onClick={() => setHide(d => ({ ...d, hideDate: !d.hideDate }))}
@@ -115,6 +115,14 @@ const HistoryPage = () => {
               }
             }}
             icon={<LinkIcon />}
+            ml={4}
+          />
+        </Tooltip>
+        <Tooltip label="open info">
+          <IconButton
+            aria-label={'open info'}
+            onClick={() => setHide(d => ({ ...d, hideInfo: !d.hideInfo }))}
+            icon={hideInfo ? <ChevronDownIcon /> : <ViewOffIcon />}
             ml={4}
           />
         </Tooltip>
@@ -145,7 +153,7 @@ const HistoryPage = () => {
             r = [
               ...r,
               <GridItem key={id}>
-                <Thumbnail link={message} cb={(id = '') => setPreviousId(id)} />
+                <Thumbnail link={message} cb={(id = '') => setPreviousId(id)} showInfo={!hideInfo} />
               </GridItem>
             ]
           }
