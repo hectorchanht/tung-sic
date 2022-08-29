@@ -20,9 +20,8 @@ const RandomThumbnail = () => {
         <Thumbnail link={message} cb={null} />
       </GridItem>
     ))}
-    <br />
     <GridItem colSpan={2} justifySelf={'center'}>
-      <Button as={'a'} href={'/history'} width={'856px'}>
+      <Button as={'a'} href={'/history'} width={'856px'} bg={'black'} color={'white'} rounded={false}>
         {loc.get('more-songs')}
       </Button>
     </GridItem>
