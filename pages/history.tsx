@@ -19,7 +19,8 @@ export const defaultQuery = {
   size: pageSizeOptions[2],
   hideFb: 1,
   hideDj: 1,
-  hideDt: 1
+  hideDt: 1,
+  hideIf: 1
 };
 
 const HistoryPage = () => {
@@ -38,7 +39,6 @@ const HistoryPage = () => {
   }, [router.asPath]);
 
   const { hideFb, hideDj, hideDt, hideIf } = query;
-
 
   const [{ hideFeedback, hideText, hideDate, hideInfo }, setHide] = React.useState(
     // @ts-ignore
