@@ -9,7 +9,7 @@ project bootstrapped with [Next.js](https://nextjs.org/) which is a React Framew
 
 [Lodash](https://lodash.com/) as JavaScript utility library
 
-[moment](https://momentjs.com/) as datetime library
+[moment](https://momentjs.com/) / [dayjs](https://day.js.org/) as datetime library
 
 [nanoid](https://github.com/ai/nanoid) as unique id generator
 
