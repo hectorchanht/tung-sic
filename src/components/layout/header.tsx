@@ -18,7 +18,7 @@ const HS = ({ children }: { children: ReactNode }) => <HStack spacing={4}>
 </HStack >;
 
 const Header = () => (
-  <Flex as={'header'} h={16} alignItems={'center'} justifyContent={'space-between'}>
+  <Flex as={'header'} h={16} alignItems={'center'} justifyContent={'space-between'} pt={1}>
     <HS>
       <Box as={'a'} href='/'>
         <Image src={'/logo.png'} width={40} height={40} alt={'logo'} />
@@ -28,7 +28,7 @@ const Header = () => (
         <IconButton variant='ghost' aria-label='past echo' icon={<ChatIcon />} />
       </NavLink>
     </HS>
-    
+
     <HS>
       <ThemeSwitch />
       <LocaleSwitcher />
