@@ -18,8 +18,12 @@ const Home: NextPage = () => {
           tung-sic
         </span>
       </Box>
+
+      <Box fontWeight={800} textAlign='center'>
+        {loc.get('intro1').split(',').map((d: string, i: number) => <p key={i}>{d}</p>)}
+      </Box>
+
       <Center>
-        <br />
         <GradientBtn href={'https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di'}>
           <Box textOverflow={'ellipsis'} fontSize={30}>
             ✨✨✨✨✨✨
@@ -31,7 +35,6 @@ const Home: NextPage = () => {
             ✨✨✨✨✨✨
           </Box>
         </GradientBtn>
-        <br />
       </Center>
 
       <Center>
@@ -40,11 +43,6 @@ const Home: NextPage = () => {
         </GradientBtn>
       </Center>
 
-      <Box fontWeight={800} textAlign='center'>
-        {loc.get('intro1').split(',').map((d: string, i: number) => <p key={i}>{d}</p>)}
-      </Box>
-
-      <br />
       <RandomThumbnail />
 
       <FAQ />
