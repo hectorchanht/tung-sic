@@ -1,16 +1,18 @@
-import { Button, Grid, GridItem } from "@chakra-ui/react";
+import { Button, Grid, GridItem, useColorMode } from "@chakra-ui/react";
 import { sampleSize } from 'lodash';
 import React from "react";
 import data from '../../public/parsed-record.json';
 import { useLocale } from '../../src/utils/hooks';
 import Thumbnail from "./thumbnail";
 
+
 const RandomThumbnail = () => {
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
   const loc = useLocale();
-  const [d, setD] = React.useState([]);
+  const [d, setD] = React.useState<typeof data>([]);
 
   React.useEffect(() => {
-    // @ts-ignore
     setD(sampleSize(data.filter(({ message }) => message && message.includes('youtu.be')), 6));
   }, []);
 
@@ -21,7 +23,7 @@ const RandomThumbnail = () => {
       </GridItem>
     ))}
     <GridItem colSpan={2} justifySelf={'center'}>
-      <Button as={'a'} href={'/history'} width={'856px'} bg={'black'} color={'white'} rounded={false}>
+      <Button as={'a'} href={'/history'} width={'856px'} bg={isDark ? 'white' : 'black'} color={isDark ? 'black' : 'white'} rounded={'none'}>
         {loc.get('more-songs')}
       </Button>
     </GridItem>
