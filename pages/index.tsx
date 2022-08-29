@@ -18,7 +18,6 @@ const Home: NextPage = () => {
           tung-sic
         </span>
       </Box> */}
-      <RandomThumbnail />
       <Center>
         <br />
         <GradientBtn href={'https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di'}>
@@ -44,6 +43,7 @@ const Home: NextPage = () => {
       </Box>
 
       <br />
+      <RandomThumbnail />
 
       <FAQ />
 
