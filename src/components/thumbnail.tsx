@@ -10,7 +10,7 @@ const getYtInfo = (id = '') => fetch(`https://www.googleapis.com/youtube/v3/vide
 // })
 type CallbackFunction = (id: string) => void;
 
-const Thumbnail = ({ link, cb }: { link: string, cb: CallbackFunction | null }) => {
+const Thumbnail = ({ link, cb, showInfo = false }: { link: string, cb?: CallbackFunction, showInfo?: boolean }) => {
   const [videoInfo, setVideoInfo] = React.useState({});
   /*
   todo: get all video info beforehand and store it in gunjs
@@ -29,6 +29,9 @@ https://developers.google.com/youtube/v3/docs/playlistItems/list?apix_params=%7B
     isEmpty(videoInfo) && getYtInfo(id).then(setVideoInfo)
   };
 
+  if (showInfo) {
+    getInfo();
+  }
   return (
     <Box>
       <a onMouseOver={getInfo} onTouchStart={getInfo} href={link} target="_blank" rel="noreferrer">

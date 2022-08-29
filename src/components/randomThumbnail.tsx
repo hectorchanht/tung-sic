@@ -19,7 +19,7 @@ const RandomThumbnail = () => {
   return <Grid templateColumns='repeat(2, 1fr)' gap={"2px"} >
     {d.length && d.map(({ message, id }) => (
       <GridItem key={id}>
-        <Thumbnail link={message} cb={null} />
+        <Thumbnail link={message} showInfo={true} />
       </GridItem>
     ))}
     <GridItem colSpan={2} justifySelf={'center'}>
