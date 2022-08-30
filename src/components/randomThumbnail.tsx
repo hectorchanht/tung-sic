@@ -21,7 +21,7 @@ const RandomThumbnail = () => {
       <GridItem key={id}>
         <Thumbnail link={message} showInfo={true} />
       </GridItem>
-    ))}
+    )) || null}
     <GridItem colSpan={2} justifySelf={'center'}>
       <Button as={'a'} href={'/history'} width={'min(90vw, 856px)'} bg={isDark ? 'white' : 'black'} color={isDark ? 'black' : 'white'} rounded={'none'}>
         {loc.get('more-songs')}
