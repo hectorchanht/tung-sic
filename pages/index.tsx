@@ -45,7 +45,7 @@ const Home: NextPage = () => {
 
       <RandomThumbnail />
 
-      <FAQ />
+      {/* <FAQ /> */}
 
     </Layout>
   )
