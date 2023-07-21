@@ -3,7 +3,7 @@ import { Box, Code, Img, Text } from '@chakra-ui/react';
 import { isEmpty } from 'lodash';
 import React from 'react';
 
-const getYtInfo = (id = '') => fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${process.env.NEXT_PUBLIC_YOUTUBE_ID}&part=snippet`)
+const getYtInfo = (id = '') => fetch(`https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${process.env.YOUTUBE_KEY}&part=snippet`)
   .then(d => d.json());
 // .then(d => {
 //   return d;
