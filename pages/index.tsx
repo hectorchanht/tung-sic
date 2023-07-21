@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         {loc.get('intro1').split(',').map((d: string, i: number) => <p key={i}>{d}</p>)}
       </Box>
 
-      <Center>
+      {/* <Center>
         <GradientBtn href={'https://chat.whatsapp.com/Ek2082QfodUAY00Qdcr2Di'}>
           <Box textOverflow={'ellipsis'} fontSize={30}>
             ✨✨✨✨✨✨
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
             ✨✨✨✨✨✨
           </Box>
         </GradientBtn>
-      </Center>
+      </Center> */}
 
       <Center>
         <GradientBtn cls={'btn2'} href={'https://www.youtube.com/playlist?list=PLAXM729RypVMDM4leAk_rycoNBGIk-SwY'}>
