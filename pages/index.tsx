@@ -1,6 +1,5 @@
 import { Box, Center } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import FAQ from '../src/components/faq'
 import GradientBtn from '../src/components/gradientBtn'
 import Layout from '../src/components/layout'
 import RandomThumbnail from '../src/components/randomThumbnail'
@@ -19,6 +18,9 @@ const Home: NextPage = () => {
         </span>
       </Box>
 
+      <Box fontWeight={800} textAlign='center'>
+        {loc.get('introHK')}
+      </Box>
       <Box fontWeight={800} textAlign='center'>
         {loc.get('intro1').split(',').map((d: string, i: number) => <p key={i}>{d}</p>)}
       </Box>

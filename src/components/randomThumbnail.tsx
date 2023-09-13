@@ -23,7 +23,8 @@ const RandomThumbnail = () => {
       </GridItem>
     )) || null}
     <GridItem colSpan={2} justifySelf={'center'}>
-      <Button as={'a'} href={'/history'} width={'min(90vw, 856px)'} bg={isDark ? 'white' : 'black'} color={isDark ? 'black' : 'white'} rounded={'none'}>
+      <Button border='2px' borderColor='white'
+        as={'a'} href={'/history'} width={'min(90vw, 856px)'} bg={isDark ? 'white' : 'black'} color={isDark ? 'black' : 'white'} rounded={'none'}>
         {loc.get('more-songs')}
       </Button>
     </GridItem>
