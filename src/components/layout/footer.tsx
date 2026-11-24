@@ -10,8 +10,8 @@ const Footer = () => {
   const { colorMode } = useColorMode();
 
   return <Box textAlign={'center'} as="footer" mt="auto" pt={12}>
-    <a href="https://github.com/hectorchanht/tung-sic" target="_blank" rel="noopener noreferrer" >
-      <GithubIcon colorMode={colorMode} /> source code
+    <a href="https://github.com/hectorchanht/tung-sic" target="_blank" rel="noopener noreferrer" aria-label="source code" title="source code">
+      <GithubIcon colorMode={colorMode} />
     </a>
   </Box>
 };

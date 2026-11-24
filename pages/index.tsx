@@ -40,8 +40,8 @@ const Home: NextPage = () => {
       </Center> */}
 
       <Center>
-        <GradientBtn cls={'btn2'} href={'https://www.youtube.com/playlist?list=PLAXM729RypVMDM4leAk_rycoNBGIk-SwY'}>
-          Youtube Playlist
+        <GradientBtn cls={'btn2'} href={'https://www.youtube.com/playlist?list=PLAXM729RypVMDM4leAk_rycoNBGIk-SwY'} label={'Youtube Playlist'}>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" style={{ display: 'block' }}><polygon points="6 3 20 12 6 21 6 3" /></svg>
         </GradientBtn>
       </Center>
 

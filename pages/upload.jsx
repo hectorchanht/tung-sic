@@ -1,3 +1,4 @@
+import { ArrowUpIcon } from '@chakra-ui/icons';
 import { Button, Input } from '@chakra-ui/react';
 import { useState } from "react";
 
@@ -35,8 +36,10 @@ export default function PrivatePage() {
           width='100%'
           isDisabled={!image}
           onClick={uploadToServer}
+          aria-label='Send to server'
+          title='Send to server'
         >
-          Send to server
+          <ArrowUpIcon boxSize={5} />
         </Button>
         <p>{response}</p>
         <img src={createObjectURL || undefined} alt={createObjectURL ? '' : createObjectURL} />

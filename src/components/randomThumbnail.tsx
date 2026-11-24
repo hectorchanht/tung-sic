@@ -1,3 +1,4 @@
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { Button, Grid, GridItem, useColorMode } from "@chakra-ui/react";
 import { sampleSize } from 'lodash';
 import React from "react";
@@ -24,8 +25,9 @@ const RandomThumbnail = () => {
     )) || null}
     <GridItem colSpan={2} justifySelf={'center'}>
       <Button border='2px' borderColor='white'
-        as={'a'} href={'/history'} width={'min(90vw, 856px)'} bg={isDark ? 'white' : 'black'} color={isDark ? 'black' : 'white'} rounded={'none'}>
-        {loc.get('more-songs')}
+        as={'a'} href={'/history'} width={'min(90vw, 856px)'} bg={isDark ? 'white' : 'black'} color={isDark ? 'black' : 'white'} rounded={'none'}
+        aria-label={loc.get('more-songs')} title={loc.get('more-songs')}>
+        <HamburgerIcon boxSize={6} />
       </Button>
     </GridItem>
     <br />

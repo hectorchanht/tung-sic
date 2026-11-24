@@ -6,7 +6,7 @@ const ThemeSwitch = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Button variant='ghost' onClick={toggleColorMode}>
+    <Button variant='ghost' onClick={toggleColorMode} aria-label={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'} title={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}>
       {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
     </Button>
   )
